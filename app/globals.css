@@ -1,8 +1,26 @@
 :root {
+
+
   --clr-indigo: hsl(238, 100%, 69%);
 
   --clr-pale-yellow: hsl(43, 100%, 81%);
-  --clr-gray: hsl(0, 0%, 44%);
+
+  /**------Gradient Colors------**/
+  --clr-gradient-yellow: hsl(43, 100%, 71%);
+  --clr-gradient-turquoise: hsla(166, 69%, 53%, 79%);
+
+  --clr-gradient-red: hsl(0, 95%, 77%);
+  --clr-gradient-light-blue: hsl(191, 97%, 73%);
+
+  --clr-gradient-light-green: hsl(148, 45%, 67%);
+  --clr-gradient-light-red: hsl(0, 100%, 86%);
+
+  --clr-gradient-indigo: hsl(238, 98%, 78%);
+  --clr-gradient-sky-blue: hsl(202, 100%, 78%);
+  /**-------------------------**/
+
+
+  --clr-gray: hwb(0 44% 56%);
 
   --ff-primary: "Inter", sans-serif;
 
@@ -37,7 +55,11 @@
     fw-medium: 500
     fw-semibold: 600
   */
+  --fs-h1: var(--fs-500);
+  --fs-h2: var(--fs-300);
+  --fs-animated-card-title: var(--fs-200);
 
+  --fs-button-text: var(--fs-125);
   --fs-body: var(--fs-100);
 
   --fw-regular: 400;
@@ -146,17 +168,14 @@ svg {
 .button {
   border: none;
   border-radius: 500px;
-  background-color: var(--clr-blue);
-  font-size: var(--fs-button-text);
-  font-weight: var(--fw-900);
-  color: white;
+  /* color: white; */
   cursor: pointer;
   /* padding-block: 0.5rem; */
-  transition: background-color 0.3s ease;
+  /* transition: background-color 0.3s ease; */
 }
-.button:hover {
+/* .button:hover {
   background-color: var(--clr-blue-hover);
-}
+} */
 
 .image {
   display: block;
