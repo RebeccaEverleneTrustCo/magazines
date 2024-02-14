@@ -1,0 +1,40 @@
+.card {
+  --dimension: 3rem;
+  height: var(--dimension);
+  width: var(--dimension);
+  border-radius: 100%;
+
+  /* box-shadow: ; */
+  margin-right: 1rem;
+  margin-top: 1rem;
+
+  box-shadow: -0.1rem 0.3rem 0.7rem 0.05rem rgba(0, 0, 0, 0.3);
+  /* transition: box-shadow 0.3s ease, background 0.3s linear; */
+  transition: all 0.3s ease;
+}
+
+.alphabet {
+  font-size: var(--fs-80);
+  font-weight: var(--fw-regular);
+}
+
+.card:hover {
+  box-shadow: -0.1rem 0.3rem 0.3rem 0.05rem rgba(0, 0, 0, 0.3);
+}
+
+.yellowGreenGradient {
+  background: linear-gradient(
+    110deg,
+    var(--clr-gradient-turquoise),
+    var(--clr-gradient-yellow)
+  );
+}
+
+.whiteBg {
+  /* background-color: white; */
+  background: linear-gradient(110deg, white, white);
+}
+
+.fwSemiBold {
+  font-weight: var(--fw-semibold);
+}

@@ -1,6 +1,4 @@
 :root {
-
-
   --clr-indigo: hsl(238, 100%, 69%);
 
   --clr-pale-yellow: hsl(43, 100%, 81%);
@@ -19,8 +17,8 @@
   --clr-gradient-sky-blue: hsl(202, 100%, 78%);
   /**-------------------------**/
 
-
-  --clr-gray: hwb(0 44% 56%);
+  /* --clr-gray: hwb(0 44% 56%); */
+  --clr-text-gray: hsl(0, 0%, 44%);
 
   --ff-primary: "Inter", sans-serif;
 
@@ -57,9 +55,10 @@
   */
   --fs-h1: var(--fs-500);
   --fs-h2: var(--fs-300);
-  --fs-animated-card-title: var(--fs-200);
+  --fs-card-title: var(--fs-200);
 
   --fs-button-text: var(--fs-125);
+  --fs-nav-text: var(--fs-125);
   --fs-body: var(--fs-100);
 
   --fw-regular: 400;
@@ -149,6 +148,17 @@ svg {
 }
 .tc-inactive-text {
   color: var(--clr-gray);
+}
+.tc-pale-yellow {
+  color: var(--clr-pale-yellow);
+}
+
+.fw-regular {
+  font-weight: var(--fw-regular);
+}
+
+.fw-semi-bold {
+  font-weight: var(--fw-semibold);
 }
 
 .flex-row {

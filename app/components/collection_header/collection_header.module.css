@@ -1,0 +1,27 @@
+.header {
+  width: 100%;
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-semibold);
+
+  background-image: url('../../../public/yellow_green_gradient.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right top;
+
+  min-height: 50vh;
+}
+
+.shapeImg {
+  height: 5.375rem;
+  width: auto;
+}
+.mascotImg {
+  height: 8.5rem;
+  width: auto;
+}
+
+.header > * > *:not(:last-child) {
+  margin-right: 1rem;
+}
+
+

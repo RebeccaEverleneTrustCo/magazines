@@ -34,6 +34,7 @@ import parents1 from "@/public/parents_1.png";
 import parents2 from "@/public/parents_2.png";
 import parents3 from "@/public/parents_3.png";
 import parents4 from "@/public/parents_4.png";
+import AlphaOrder from "./alpha_order";
 
 const youngKidsImgs = [
   youngKids1,
@@ -99,7 +100,7 @@ export default function Home() {
         <span className={styles.h2}>
           Discover Magazines by <span className={`tc-indigo`}>Age Range</span>
         </span>
-      </div>
+    ;  </div>
 
       <div className={`${styles.section} flex-row ${styles.ageRangeSection} `}>
         <div className={styles.youngKidsGradient}>
@@ -138,8 +139,14 @@ export default function Home() {
         </div>
       </div>
 
+      <div className={`${styles.section} ${styles.discoverSection} flex-column`}>
+        <span className={styles.h2}>
+          Discover Magazines by{" "}
+          <span className={`tc-pale-yellow`}>Alpha Order</span>
+        </span>
 
-      <div className={`${styles.section} ${styles.discoverSection}`}></div>
+        <AlphaOrder />
+      </div>
     </main>
   );
 }

@@ -1,0 +1,15 @@
+.main {
+}
+
+.body {
+  width: 100%;
+  padding-inline: 4rem;
+}
+
+.body > * {
+  margin-block: 4rem;
+}
+
+.content {
+  flex: 2;
+}

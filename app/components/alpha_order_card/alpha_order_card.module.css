@@ -1,0 +1,72 @@
+.card {
+  height: 31.5rem;
+  width: 21.5rem;
+
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  margin-right: 2rem;
+  margin-top: 2rem;
+
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.youngKidsGradient {
+  background: linear-gradient(
+    90deg,
+    var(--clr-gradient-turquoise),
+    var(--clr-gradient-yellow)
+  );
+}
+.middleSchoolGradient {
+  background: linear-gradient(
+    -45deg,
+    var(--clr-gradient-red),
+    var(--clr-gradient-light-blue)
+  );
+}
+
+.highSchoolGradient {
+  background: linear-gradient(
+    75deg,
+    var(--clr-gradient-light-red),
+    var(--clr-gradient-light-green)
+  );
+}
+
+.parentsGradient {
+  background: linear-gradient(
+    90deg,
+    var(--clr-gradient-sky-blue),
+    var(--clr-gradient-indigo)
+  );
+}
+
+.learnMoreButton {
+  border: none;
+  background-color: transparent;
+
+  font-size: var(--fs-button-text);
+  font-weight: var(--fw-medium);
+
+  cursor: pointer;
+}
+
+.alphaOrderImgSection {
+  height: 11.875rem;
+  width: 18.7rem;
+  background-color: white;
+  border-radius: 0.625rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: var(--fs-card-title);
+}
+
+.body {
+  min-height: 7.5625rem;
+  font-size: var(--fs-112);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}

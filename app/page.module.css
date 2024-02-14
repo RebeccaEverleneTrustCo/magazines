@@ -62,9 +62,9 @@
 
 .exploreButton {
   background: linear-gradient(
-    0.25turn,
-    var(--clr-turquoise),
-    var(--clr-yellow)
+    90deg, 
+    var(--clr-gradient-turquoise),
+    var( --clr-gradient-yellow)
   );
   font-size: var(--fs-button-text);
   padding-block: 0.7rem;
@@ -156,10 +156,35 @@
 }
 
 .discoverSection {
-  height: 100vh;
+  min-height: 100vh;
+  justify-content: flex-start;
+
   background: linear-gradient(
     -4.19deg,
     rgba(30, 118, 249, 1),
     rgba(46, 215, 238, 1)
   );
+}
+
+.alphaOrderRow {
+  flex-wrap: wrap;
+  max-width: 55rem;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+
+.magazineRow {
+  min-height: 31.5rem;
+  max-width: 72rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media (max-width: 1183px) {
+  .youngKidsGradient,
+  .middleSchoolGradient,
+  .highSchoolGradient,
+  .parentsGradient {
+    justify-content: center;
+  }
 }

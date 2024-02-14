@@ -26,7 +26,7 @@
 }
 
 .cardTitle {
-  font-size: var(--fs-animated-card-title);
+  font-size: var(--fs-card-title);
   font-weight: var(--fw-medium);
   margin-top: 1rem;
 }

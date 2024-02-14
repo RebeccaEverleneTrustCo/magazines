@@ -1,0 +1,26 @@
+.searchInput {
+    --input-width: min(20rem, 22vw);
+    width: var(--input-width);
+    border: none;
+    color: var(--clr-text-gray);
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--clr-text-gray);
+  
+    padding-inline: 1rem;
+    padding-bottom: .3rem;
+  
+    background-image: url(../../../public/search.svg);
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    vertical-align: middle;
+  }
+  
+  .searchInput::placeholder{
+    color: var(--clr-text-gray);
+  }
+  
+  .searchInput:focus {
+    outline: none;
+  }
+  
