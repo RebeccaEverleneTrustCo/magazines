@@ -109,7 +109,7 @@ export default function Home() {
             alt="Young Kid Mascot"
             className={styles.ageRangeMascot}
           />
-          <AnimatedCard src={youngKidsImgs} text="Young Kids" />
+          <AnimatedCard src={youngKidsImgs} text="Young Kids" href="young-kids" />
         </div>
         <div className={styles.middleSchoolGradient}>
           <Image
@@ -117,7 +117,7 @@ export default function Home() {
             alt="Middle School Mascot"
             className={styles.ageRangeMascot}
           />
-          <AnimatedCard src={middleSchoolImgs} text="Middle School" />
+          <AnimatedCard src={middleSchoolImgs} text="Middle School" href="" />
         </div>
 
         <div className={styles.highSchoolGradient}>
@@ -126,7 +126,7 @@ export default function Home() {
             alt="High School Mascot"
             className={styles.ageRangeMascot}
           />
-          <AnimatedCard src={highSchoolImgs} text="High School" />
+          <AnimatedCard src={highSchoolImgs} text="High School" href=""/>
         </div>
 
         <div className={styles.parentsGradient}>
@@ -135,7 +135,7 @@ export default function Home() {
             alt="Parents Mascot"
             className={styles.ageRangeMascot}
           />
-          <AnimatedCard src={parentsImg} text="Parents" />
+          <AnimatedCard src={parentsImg} text="Parents" href=""/>
         </div>
       </div>
 

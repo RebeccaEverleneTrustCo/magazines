@@ -4,8 +4,17 @@ import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import React from "react";
 import { useEffect } from "react";
+import Link from "next/link";
 
-function AnimatedCard({ src, text }: { src: StaticImageData[]; text: string }) {
+function AnimatedCard({
+  src,
+  text,
+  href,
+}: {
+  src: StaticImageData[];
+  text: string;
+  href: string;
+}) {
   const [index, setIndex] = React.useState(0);
 
   useEffect(() => {
@@ -21,19 +30,21 @@ function AnimatedCard({ src, text }: { src: StaticImageData[]; text: string }) {
   }, []);
 
   return (
-    <div className={styles.card}>
-      <motion.div
-        className={`image ${styles.cardImg}`}
-        key={index}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 2 }}
-      >
-        <Image src={src[index]} alt={text} fill={true} sizes="100%" />
-      </motion.div>
-      <span className={styles.cardTitle}>{text}</span>
-    </div>
+    <Link href={href} style={{ textDecoration: 'none', color: 'black' }}>
+      <div className={styles.card}>
+        <motion.div
+          className={`image ${styles.cardImg}`}
+          key={index}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 2 }}
+        >
+          <Image src={src[index]} alt={text} fill={true} sizes="100%" />
+        </motion.div>
+        <span className={styles.cardTitle}>{text}</span>
+      </div>
+    </Link>
   );
 }
 
