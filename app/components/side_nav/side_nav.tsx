@@ -2,6 +2,8 @@ import styles from "./side_nav.module.css";
 import { IFilter, IResult } from "../../data/filter_data";
 import removeIcon from "@/public/remove_icon.svg";
 import Image from "next/image";
+import { useState } from "react";
+
 import {
   ICollectionState,
   IAction,
@@ -66,6 +68,7 @@ function SideNav({
           }}
         />
       ))}
+
       <span className={styles.filterTypeTitle}>Sources</span>
       {state.sourceList.map((source: IFilter) => (
         <CheckBox
@@ -90,6 +93,7 @@ function SideNav({
           }}
         />
       ))}
+
       <span className={styles.filterTypeTitle}>Age Range</span>
       {state.ageRangeList.map((ageRange: IFilter) => (
         <CheckBox
@@ -130,7 +134,15 @@ function SideNav({
           Apply Filter
         </button>
 
-        <div className={`${styles.clearButton} flex-row`}>
+        <div
+          className={`${styles.clearButton} flex-row`}
+          onClick={() => {
+            dispatch({
+              type: ActionType.ClearFilters,
+              payload: { ...state },
+            });
+          }}
+        >
           <Image src={removeIcon} alt="Remove" className={styles.clearIcon} />
         </div>
       </div>
