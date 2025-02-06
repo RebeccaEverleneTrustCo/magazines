@@ -20,6 +20,7 @@ export enum ActionType {
   SetAgeRanges = "SET_AGE_RANGES",
   AddArticleList = "ADD_ARTICLE_LIST",
   SetFilteredArticles = "SET_FILTERED_ARTICLES",
+  ClearFilters = "CLEAR_FILTERS",
 }
 
 export interface IFilterHash {
@@ -45,8 +46,6 @@ export interface IAction {
 }
 
 function filterArticles(state: ICollectionState): IArticle[] {
-  // console.log(state.selectedSourceIds);
-  console.log(Object.keys(state.selectedSourceIds).length);
   return state.articleList.filter((article: IArticle) => {
     if (state.selectedStatus.id && article.statusId !== state.selectedStatus.id)
       return false;
@@ -68,7 +67,6 @@ function filterArticles(state: ICollectionState): IArticle[] {
 function reducer(state: ICollectionState, action: IAction): ICollectionState {
   switch (action.type) {
     case ActionType.AddFilterData:
-      // console.log(action.payload.ageRangeList.length)
       return {
         ...state,
         statusList: [...action.payload.statusList],
@@ -76,10 +74,14 @@ function reducer(state: ICollectionState, action: IAction): ICollectionState {
         ageRangeList: [...action.payload.ageRangeList],
         loadingFilters: false,
       };
+
     case ActionType.SetSelectedStatus:
       return {
         ...state,
-        selectedStatus: action.payload.selectedStatus,
+        selectedStatus:
+          state.selectedStatus.id === action.payload.selectedStatus.id
+            ? ({} as IFilter)
+            : action.payload.selectedStatus,
       };
 
     case ActionType.SetSelectedSources:
@@ -102,12 +104,17 @@ function reducer(state: ICollectionState, action: IAction): ICollectionState {
       };
 
     case ActionType.SetFilteredArticles:
-      // console.log(state.selectedSourceIds);
-
-      console.log(filterArticles(state).length);
       return {
         ...state,
         filteredArticleList: [...filterArticles(state)],
+      };
+    case ActionType.ClearFilters:
+      return {
+        ...state,
+        selectedStatus: {} as IFilter,
+        selectedSourceIds: {},
+        selectedAgeRangeIds: {},
+        filteredArticleList: [...state.articleList],
       };
 
     default: {
@@ -133,27 +140,23 @@ function YoungKids() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   useEffect(() => {
-    setInterval(() => {
-      dispatch({
-        type: ActionType.AddFilterData,
-        payload: {
-          ...initialState,
-          statusList: filterData.statusList,
-          sourceList: filterData.sourcesList,
-          ageRangeList: filterData.ageRangeList,
-        },
-      });
-    }, 1000);
+    dispatch({
+      type: ActionType.AddFilterData,
+      payload: {
+        ...initialState,
+        statusList: filterData.statusList,
+        sourceList: filterData.sourcesList,
+        ageRangeList: filterData.ageRangeList,
+      },
+    });
 
-    setInterval(() => {
-      dispatch({
-        type: ActionType.AddArticleList,
-        payload: {
-          ...state,
-          articleList: youngKidsArticleData,
-        },
-      });
-    }, 1500);
+    dispatch({
+      type: ActionType.AddArticleList,
+      payload: {
+        ...state,
+        articleList: youngKidsArticleData,
+      },
+    });
   }, []);
 
   return (
