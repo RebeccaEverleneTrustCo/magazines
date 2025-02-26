@@ -6,7 +6,7 @@ export interface IFilter {
 export interface IResult {
   statusList: IFilter[];
   sourcesList: IFilter[];
-  ageRangeList: IFilter[];
+  ageRangeList?: IFilter[];
 }
 export const filterData: IResult = {
   statusList: [

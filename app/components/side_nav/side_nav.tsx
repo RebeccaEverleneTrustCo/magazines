@@ -1,13 +1,11 @@
 import styles from "./side_nav.module.css";
-import { IFilter, IResult } from "../../data/filter_data";
+import { IFilter, IResult } from "../../__mock__/filter_data";
 import removeIcon from "@/public/remove_icon.svg";
 import Image from "next/image";
-import {
-  ICollectionState,
-  IAction,
-  ActionType,
-  IFilterHash,
-} from "../../young-kids/page";
+import { ActionType } from "../../store/actionTypes";
+import {  IAction } from "../../young-kids/page";
+import { IFilterHash } from "@/app/store/IFilterHash";
+import { ICollectionState } from "@/app/store/stateTypes";
 
 function CheckBox({
   label,
@@ -90,31 +88,37 @@ function SideNav({
           }}
         />
       ))}
-      <span className={styles.filterTypeTitle}>Age Range</span>
-      {state.ageRangeList.map((ageRange: IFilter) => (
-        <CheckBox
-          label={ageRange.name}
-          group="age_range"
-          checked={ageRange.id in state.selectedAgeRangeIds}
-          onClick={() => {
-            const ageRangeIds: IFilterHash = { ...state.selectedAgeRangeIds };
-            if (ageRange.id in state.selectedAgeRangeIds) {
-              delete ageRangeIds[ageRange.id];
-            } else {
-              ageRangeIds[ageRange.id] = "";
-            }
+      {state.ageRangeList && state.ageRangeList.length > 0 && (
+        <>
+          <span className={styles.filterTypeTitle}>Age Range</span>
 
-            dispatch({
-              type: ActionType.SetSelectedAgeRange,
-              payload: {
-                ...state,
-                selectedAgeRangeIds: ageRangeIds,
-              },
-            });
-          }}
-        />
-      ))}
+          {state.ageRangeList.map((ageRange: IFilter) => (
+            <CheckBox
+              label={ageRange.name}
+              group="age_range"
+              checked={ageRange.id in state.selectedAgeRangeIds}
+              onClick={() => {
+                const ageRangeIds: IFilterHash = {
+                  ...state.selectedAgeRangeIds,
+                };
+                if (ageRange.id in state.selectedAgeRangeIds) {
+                  delete ageRangeIds[ageRange.id];
+                } else {
+                  ageRangeIds[ageRange.id] = "";
+                }
 
+                dispatch({
+                  type: ActionType.SetSelectedAgeRange,
+                  payload: {
+                    ...state,
+                    selectedAgeRangeIds: ageRangeIds,
+                  },
+                });
+              }}
+            />
+          ))}
+        </>
+      )}
       <div className={`flex-row ${styles.buttonWrapper}`}>
         <button
           className={`button ${styles.applyButton}`}
@@ -131,7 +135,21 @@ function SideNav({
         </button>
 
         <div className={`${styles.clearButton} flex-row`}>
-          <Image src={removeIcon} alt="Remove" className={styles.clearIcon} />
+          <Image
+            src={removeIcon}
+            alt="Remove"
+            className={styles.clearIcon}
+            onClick={() => {
+              dispatch({
+                type: ActionType.ClearFilters,
+                payload: {
+                  ...state,
+                  selectedSourceIds: {},
+                  selectedAgeRangeIds: {},
+                },
+              });
+            }}
+          />
         </div>
       </div>
     </div>
