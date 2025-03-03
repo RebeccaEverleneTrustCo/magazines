@@ -7,7 +7,8 @@ import {
   IAction,
   ActionType,
   IFilterHash,
-} from "../../young-kids/page";
+} from "../../high_school/page";
+
 
 function CheckBox({
   label,

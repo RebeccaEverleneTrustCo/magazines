@@ -120,15 +120,14 @@ export default function Home() {
           <AnimatedCard src={middleSchoolImgs} text="Middle School" href="" />
         </div>
 
-        <div className={styles.highSchoolGradient}>
+        <div className={styles.highSchoolGradient} >
           <Image
             src={highSchoolMascot}
             alt="High School Mascot"
             className={styles.ageRangeMascot}
           />
-          <AnimatedCard src={highSchoolImgs} text="High School" href=""/>
-        </div>
-
+          <AnimatedCard src={highSchoolImgs} text="High School" href="high_school"/>
+        </div>-
         <div className={styles.parentsGradient}>
           <Image
             src={parentsMascot}
