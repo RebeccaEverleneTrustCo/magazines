@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./page.module.css";
 import HeaderBar from "../components/header_bar/header_bar";
@@ -8,11 +7,9 @@ import CollectionHeader from "../components/collection_header/collection_header"
 
 import { filterData, IFilter } from "../data/filter_data";
 import ArticleCard from "../components/article_card/article_card";
-import ArticleDetailCard from "../components/article_details/article_details";
 import ContentFilter from "./content_filter/content_filter";
 
 import { IArticle, youngKidsArticleData } from "../data/article_data";
-import { youngKidsSourceData } from "../data/source_data";
 import React, { useEffect } from "react";
 
 export enum ActionType {
@@ -64,13 +61,7 @@ function filterArticles(state: ICollectionState): IArticle[] {
     )
       return false;
 
-    // if (
-    //  not youngKidsSourceData.some((source) => source.article.source.id === article.source.id)
-    // ) {
-    //   return false;
-    // }
-
-    // return true;
+    return true;
   });
 }
 
@@ -138,36 +129,11 @@ const initialState: ICollectionState = {
   loadingArticles: true,
 };
 
-function YoungKids({ ageRange }: { ageRange: number }) {
+function MiddleSchool() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedArticle, setSelectedArticle] = useState<IArticle | null>(null); // Track selected article
-
-  const router = useRouter();
-
-  const handleViewMore = (article: IArticle) => {
-    const foundArticle = youngKidsSourceData.find(
-      (a) => a.article.statusId === article.statusId
-    );
-    console.log(foundArticle)
-    if (foundArticle) {
-      setSelectedArticle(foundArticle.article);
-      router.push(`/${foundArticle.article.statusId}`); // Navigate using the new data source
-    }
-  };
-
+  const [selectedIndex, setSelectedIndex] = useState(1);
   useEffect(() => {
-    if (
-      selectedArticle &&
-      !state.filteredArticleList.some(
-        (a) => a.statusId === selectedArticle.statusId
-      )
-    ) {
-      setSelectedArticle(null);
-    }
-  }, [state.filteredArticleList, selectedArticle]);
-  useEffect(() => {
-    const filterTimer = setTimeout(() => {
+    setInterval(() => {
       dispatch({
         type: ActionType.AddFilterData,
         payload: {
@@ -179,7 +145,7 @@ function YoungKids({ ageRange }: { ageRange: number }) {
       });
     }, 1000);
 
-    const articleTimer = setTimeout(() => {
+    setInterval(() => {
       dispatch({
         type: ActionType.AddArticleList,
         payload: {
@@ -188,17 +154,15 @@ function YoungKids({ ageRange }: { ageRange: number }) {
         },
       });
     }, 1500);
-    return () => {
-      clearTimeout(filterTimer);
-      clearTimeout(articleTimer);
-    };
   }, []);
 
   return (
     <div className={`flex-column ${styles.main}`}>
-      <CollectionHeader ageRange={selectedIndex} />
+      <CollectionHeader
+        ageRange={selectedIndex}
+      />
       <div className={`${styles.body}`}>
-        <HeaderBar ageRange={selectedIndex} />
+      <HeaderBar ageRange={selectedIndex} />
         {state.loadingFilters ? (
           <span className={`text-align-center ${styles.loaderText}`}>
             Loading
@@ -208,66 +172,21 @@ function YoungKids({ ageRange }: { ageRange: number }) {
             <SideNav state={state} dispatch={dispatch} />
             <div className={`${styles.content} flex-column`}>
               <ContentFilter />
+
               <div className={`flex-row justify-start ${styles.magazineList}`}>
                 {state.loadingArticles ? (
                   <span>Loading</span>
                 ) : (
                   state.filteredArticleList.map((article: IArticle) => (
                     <ArticleCard
-                      key={article.statusId} // ensure unique key
                       src={article.img}
                       title={article.name}
                       subtitle={article.source.name}
                       isFavorite={false}
-                      statusId={article.statusId}
-                      onViewMore={() => handleViewMore(article)} // Handle "View More"
                     />
                   ))
                 )}
               </div>
-
-              {/* Conditionally render ArticleDetailCard below the list */}
-              {selectedArticle && (
-                <div className="article-detail-container">
-                  <ArticleDetailCard
-                    description={selectedArticle.description}
-                    isFavorite={false} // Pass your required props here
-                    isReading={false} // Add logic for this if needed
-                  />
-                </div>
-              )}
-
-              {/* <div className={`flex-row justify-start ${styles.magazineList}`}>
-                {state.loadingArticles ? (
-                  <span>Loading</span>
-                ) : (
-                  state.filteredArticleList.map((article: IArticle) => (
-                    <ArticleCard
-                      key={article.statusId} // ensure unique key
-                      src={article.img}
-                      title={article.name}
-                      subtitle={article.source.name}
-                      isFavorite={false}
-                      statusId={article.statusId}
-                      onViewMore={() => handleViewMore(article)} // Handle "View More"
-                    />
-                    // <ArticleCard
-                    //   src={article.img}
-                    //   title={article.name}
-                    //   subtitle={article.source.name}
-                    //   isFavorite={false}
-                    // />
-                  ))
-                )}
-              </div> */}
-              {/* Conditionally render ArticleDetailCard */}
-              {/* {selectedArticle && (
-                <ArticleDetailCard
-                  description={selectedArticle.description}
-                  isFavorite={false} // Pass your required props here
-                  isReading={false} // Add logic for this if needed
-                />
-              )} */}
             </div>
           </div>
         )}
@@ -276,4 +195,4 @@ function YoungKids({ ageRange }: { ageRange: number }) {
   );
 }
 
-export default YoungKids;
+export default MiddleSchool;
