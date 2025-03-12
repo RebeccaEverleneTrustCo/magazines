@@ -2,8 +2,8 @@
 import styles from "./page.module.css";
 import AlphaOrderChip from "./components/alpha_order_chip/alpha_order_chip";
 import React from "react";
-import AlphaOrderCard from "./components/alpha_order_card/alpha_order_card";
-import { magazineData, IMagazine } from "./data/magazine_data";
+import { AlphaOrderCard } from "./components/alpha_order_card/alpha_order_card";
+import { magazineData, IMagazine } from "./__mock__/magazine_data";
 
 function filterAndDisplayList(alphaIndex: number) {
   const filteredData = magazineData.filter((magazine: IMagazine) =>
@@ -12,7 +12,9 @@ function filterAndDisplayList(alphaIndex: number) {
 
   if (filteredData.length === 0) {
     return (
-      <span className={styles.h2}>No Magazines found for {String.fromCharCode(65 + alphaIndex)}</span>
+      <span className={styles.h2}>
+        No Magazines found for {String.fromCharCode(65 + alphaIndex)}
+      </span>
     );
   }
 

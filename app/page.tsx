@@ -135,7 +135,7 @@ export default function Home() {
             alt="Parents Mascot"
             className={styles.ageRangeMascot}
           />
-          <AnimatedCard src={parentsImg} text="Parents" href=""/>
+          <AnimatedCard src={parentsImg} text="Parents" href="parents"/>
         </div>
       </div>
 

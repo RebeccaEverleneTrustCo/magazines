@@ -3,35 +3,25 @@ import Image, { StaticImageData } from "next/image";
 import cp from "@/public/cp.png";
 import { useRouter } from "next/navigation";
 
-import youngKidsMascot from "@/public/young_kids_mascot.svg";
-import middleSchoolMascot from "@/public/middle_school_mascot.svg";
-import highSchoolMascot from "@/public/high_school_mascot.svg"; 
-import parentsMascot from "@/public/parents_mascot.svg"
 interface numStringHash {
   [key: number]: string;
 }
 
-export const ageRangeToRoute: numStringHash = {
-  0: "Young Kids",
-  1: "Middle School",
-  2: "High School",
-  3: "Parent",
+const ageRangeToRoute: numStringHash = {
+  0: "young-kids",
+  1: "middle-school",
+  2: "high-school",
+  3: "parents",
 };
 
-export const ageRangeToImage: { [key: number]: StaticImageData } = {
-  0: youngKidsMascot,
-  1: middleSchoolMascot,
-  2: highSchoolMascot,
-  3: parentsMascot,
-};
-export const ageRangeToStyle: numStringHash = {
+const ageRangeToStyle: numStringHash = {
   0: styles.youngKidsGradient,
   1: styles.middleSchoolGradient,
   2: styles.highSchoolGradient,
   3: styles.parentsGradient,
 };
 
-function AlphaOrderCard({
+export const AlphaOrderCard =({
   src,
   title,
   body,
@@ -41,7 +31,7 @@ function AlphaOrderCard({
   title: string;
   body: string;
   ageRange: number;
-}) {
+}) => {
   const router = useRouter();
 
   return (
@@ -64,4 +54,3 @@ function AlphaOrderCard({
   );
 }
 
-export default AlphaOrderCard;

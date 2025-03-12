@@ -1,278 +1,30 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import styles from "./page.module.css";
-import HeaderBar from "../components/header_bar/header_bar";
-import SideNav from "../components/side_nav/side_nav";
-import CollectionHeader from "../components/collection_header/collection_header";
+import youngKidsMascot from "@/public/young_kids_mascot.svg";
+import { filterData } from "./api/filter_data_youngkids";
+import { youngKidsArticleData } from "./api/getArticleforYoungkids";
+import React from "react";
+import { ActionType } from "../store/actionTypes";
+import { ICollectionState } from "../store/stateTypes";
+import PageContent from "../components/pageContent/PageContent";
+import useArticleData from "../hooks/useArticleData";
 
-import { filterData, IFilter } from "../data/filter_data";
-import ArticleCard from "../components/article_card/article_card";
-import ArticleDetailCard from "../components/article_details/article_details";
-import ContentFilter from "./content_filter/content_filter";
-
-import { IArticle, youngKidsArticleData } from "../data/article_data";
-import { youngKidsSourceData } from "../data/source_data";
-import React, { useEffect } from "react";
-
-export enum ActionType {
-  SetSelectedStatus = "SET_SELECTED_STATUS",
-  AddFilterData = "ADD_FILTER_DATA",
-  SetSelectedSources = "SET_SELECTED_SOURCES",
-  SetSelectedAgeRange = "SET_SELECTED_AGE_RANGE",
-  SetAgeRanges = "SET_AGE_RANGES",
-  AddArticleList = "ADD_ARTICLE_LIST",
-  SetFilteredArticles = "SET_FILTERED_ARTICLES",
-}
-
-export interface IFilterHash {
-  [key: string]: string;
-}
-
-export interface ICollectionState {
-  selectedStatus: IFilter;
-  statusList: IFilter[];
-  selectedSourceIds: IFilterHash;
-  sourceList: IFilter[];
-  selectedAgeRangeIds: IFilterHash;
-  ageRangeList: IFilter[];
-  articleList: IArticle[];
-  filteredArticleList: IArticle[];
-  loadingFilters: boolean;
-  loadingArticles: boolean;
-}
 
 export interface IAction {
   type: ActionType;
   payload: ICollectionState;
 }
 
-function filterArticles(state: ICollectionState): IArticle[] {
-  // console.log(state.selectedSourceIds);
-  console.log(Object.keys(state.selectedSourceIds).length);
-  return state.articleList.filter((article: IArticle) => {
-    if (state.selectedStatus.id && article.statusId !== state.selectedStatus.id)
-      return false;
-    if (
-      Object.keys(state.selectedSourceIds).length > 0 &&
-      !(article.source.id in state.selectedSourceIds)
-    )
-      return false;
-    if (
-      Object.keys(state.selectedAgeRangeIds).length > 0 &&
-      !(article.ageRangeId in state.selectedAgeRangeIds)
-    )
-      return false;
+function YoungKids() {
 
-    // if (
-    //  not youngKidsSourceData.some((source) => source.article.source.id === article.source.id)
-    // ) {
-    //   return false;
-    // }
-
-    // return true;
-  });
-}
-
-function reducer(state: ICollectionState, action: IAction): ICollectionState {
-  switch (action.type) {
-    case ActionType.AddFilterData:
-      // console.log(action.payload.ageRangeList.length)
-      return {
-        ...state,
-        statusList: [...action.payload.statusList],
-        sourceList: [...action.payload.sourceList],
-        ageRangeList: [...action.payload.ageRangeList],
-        loadingFilters: false,
-      };
-    case ActionType.SetSelectedStatus:
-      return {
-        ...state,
-        selectedStatus: action.payload.selectedStatus,
-      };
-
-    case ActionType.SetSelectedSources:
-      return {
-        ...state,
-        selectedSourceIds: { ...action.payload.selectedSourceIds },
-      };
-
-    case ActionType.SetSelectedAgeRange:
-      return {
-        ...state,
-        selectedAgeRangeIds: { ...action.payload.selectedAgeRangeIds },
-      };
-    case ActionType.AddArticleList:
-      return {
-        ...state,
-        articleList: [...action.payload.articleList],
-        filteredArticleList: [...action.payload.articleList],
-        loadingArticles: false,
-      };
-
-    case ActionType.SetFilteredArticles:
-      // console.log(state.selectedSourceIds);
-
-      console.log(filterArticles(state).length);
-      return {
-        ...state,
-        filteredArticleList: [...filterArticles(state)],
-      };
-
-    default: {
-      throw new Error("Action not recognized");
-    }
-  }
-}
-
-const initialState: ICollectionState = {
-  selectedStatus: {} as IFilter,
-  statusList: [],
-  selectedSourceIds: {},
-  sourceList: [],
-  selectedAgeRangeIds: {},
-  ageRangeList: [],
-  articleList: [],
-  filteredArticleList: [],
-  loadingFilters: true,
-  loadingArticles: true,
-};
-
-function YoungKids({ ageRange }: { ageRange: number }) {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedArticle, setSelectedArticle] = useState<IArticle | null>(null); // Track selected article
-
-  const router = useRouter();
-
-  const handleViewMore = (article: IArticle) => {
-    const foundArticle = youngKidsSourceData.find(
-      (a) => a.article.statusId === article.statusId
-    );
-    console.log(foundArticle)
-    if (foundArticle) {
-      setSelectedArticle(foundArticle.article);
-      router.push(`/${foundArticle.article.statusId}`); // Navigate using the new data source
-    }
-  };
-
-  useEffect(() => {
-    if (
-      selectedArticle &&
-      !state.filteredArticleList.some(
-        (a) => a.statusId === selectedArticle.statusId
-      )
-    ) {
-      setSelectedArticle(null);
-    }
-  }, [state.filteredArticleList, selectedArticle]);
-  useEffect(() => {
-    const filterTimer = setTimeout(() => {
-      dispatch({
-        type: ActionType.AddFilterData,
-        payload: {
-          ...initialState,
-          statusList: filterData.statusList,
-          sourceList: filterData.sourcesList,
-          ageRangeList: filterData.ageRangeList,
-        },
-      });
-    }, 1000);
-
-    const articleTimer = setTimeout(() => {
-      dispatch({
-        type: ActionType.AddArticleList,
-        payload: {
-          ...state,
-          articleList: youngKidsArticleData,
-        },
-      });
-    }, 1500);
-    return () => {
-      clearTimeout(filterTimer);
-      clearTimeout(articleTimer);
-    };
-  }, []);
+  const { state, dispatch } = useArticleData(youngKidsArticleData, filterData);
 
   return (
-    <div className={`flex-column ${styles.main}`}>
-      <CollectionHeader ageRange={selectedIndex} />
-      <div className={`${styles.body}`}>
-        <HeaderBar ageRange={selectedIndex} />
-        {state.loadingFilters ? (
-          <span className={`text-align-center ${styles.loaderText}`}>
-            Loading
-          </span>
-        ) : (
-          <div className={`flex-row align-start`}>
-            <SideNav state={state} dispatch={dispatch} />
-            <div className={`${styles.content} flex-column`}>
-              <ContentFilter />
-              <div className={`flex-row justify-start ${styles.magazineList}`}>
-                {state.loadingArticles ? (
-                  <span>Loading</span>
-                ) : (
-                  state.filteredArticleList.map((article: IArticle) => (
-                    <ArticleCard
-                      key={article.statusId} // ensure unique key
-                      src={article.img}
-                      title={article.name}
-                      subtitle={article.source.name}
-                      isFavorite={false}
-                      statusId={article.statusId}
-                      onViewMore={() => handleViewMore(article)} // Handle "View More"
-                    />
-                  ))
-                )}
-              </div>
-
-              {/* Conditionally render ArticleDetailCard below the list */}
-              {selectedArticle && (
-                <div className="article-detail-container">
-                  <ArticleDetailCard
-                    description={selectedArticle.description}
-                    isFavorite={false} // Pass your required props here
-                    isReading={false} // Add logic for this if needed
-                  />
-                </div>
-              )}
-
-              {/* <div className={`flex-row justify-start ${styles.magazineList}`}>
-                {state.loadingArticles ? (
-                  <span>Loading</span>
-                ) : (
-                  state.filteredArticleList.map((article: IArticle) => (
-                    <ArticleCard
-                      key={article.statusId} // ensure unique key
-                      src={article.img}
-                      title={article.name}
-                      subtitle={article.source.name}
-                      isFavorite={false}
-                      statusId={article.statusId}
-                      onViewMore={() => handleViewMore(article)} // Handle "View More"
-                    />
-                    // <ArticleCard
-                    //   src={article.img}
-                    //   title={article.name}
-                    //   subtitle={article.source.name}
-                    //   isFavorite={false}
-                    // />
-                  ))
-                )}
-              </div> */}
-              {/* Conditionally render ArticleDetailCard */}
-              {/* {selectedArticle && (
-                <ArticleDetailCard
-                  description={selectedArticle.description}
-                  isFavorite={false} // Pass your required props here
-                  isReading={false} // Add logic for this if needed
-                />
-              )} */}
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
+    <PageContent state = {state} 
+    dispatch={dispatch} 
+    filterFilteredArticleList={state.filteredArticleList} 
+    mascot={youngKidsMascot} 
+    headerTitle="Young Kids"
+    />
   );
 }
 
