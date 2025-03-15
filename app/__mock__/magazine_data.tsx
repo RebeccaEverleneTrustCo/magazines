@@ -191,7 +191,7 @@ export const magazineData: IMagazine[] = [
   },
 
   {
-    name: "Time For",
+    name: "Time For Kids",
     src: timeKids,
     title: "Ages 6-12",
     body: "Are you interested in all things science? Can't get enough of astronomy, animals, and psychology? Learn science news, and little-known exciting facts.",

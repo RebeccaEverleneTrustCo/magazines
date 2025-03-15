@@ -21,7 +21,7 @@ const ageRangeToStyle: numStringHash = {
   3: styles.parentsGradient,
 };
 
-function AlphaOrderCard({
+export const AlphaOrderCard =({
   src,
   title,
   body,
@@ -31,7 +31,7 @@ function AlphaOrderCard({
   title: string;
   body: string;
   ageRange: number;
-}) {
+}) => {
   const router = useRouter();
 
   return (
@@ -54,4 +54,3 @@ function AlphaOrderCard({
   );
 }
 
-export default AlphaOrderCard;

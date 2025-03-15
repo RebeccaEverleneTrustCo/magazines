@@ -1,6 +1,7 @@
 import styles from "./article_card.module.css";
 import Image, { StaticImageData } from "next/image";
 import { HeartOutlined, Heart } from "../heart";
+import React from "react";
 
 const sampleUrl =
   "https://images.unsplash.com/photo-1633977264259-b3517c187e3d?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
@@ -15,12 +16,20 @@ function ArticleCard({
   subtitle: string;
   isFavorite: boolean;
 }) {
+  const [isFavoriteState, setIsFavoriteState] = React.useState(isFavorite);
+
+  const toggleFavorite = () => {
+    setIsFavoriteState(!isFavoriteState);
+    // dispatch({
+    //   type: ActionType.ToggleFavorite,
+    //   payload: { name: title, source: { id: subtitle } },
+    // });
+  };
   return (
     <div className={`${styles.card} flex-column`}>
       <div className={`image ${styles.cardImg}`}>
         <Image src={src} fill={true} alt="Card Image" />
         {/* <Image src={"/public/frontier.png"} fill={true} alt="Card Image"/> */}
-
       </div>
       <span className={styles.title}>{title}</span>
 
@@ -32,7 +41,15 @@ function ArticleCard({
           View More
         </button>
 
-        <HeartOutlined className={styles.heartButton} />
+        {!isFavoriteState && (
+          <HeartOutlined
+            className={styles.heartButton}
+            onClick={toggleFavorite}
+          />
+        )}
+        {isFavoriteState && (
+          <Heart className={styles.heartButton} onClick={toggleFavorite} />
+        )}
       </div>
     </div>
   );

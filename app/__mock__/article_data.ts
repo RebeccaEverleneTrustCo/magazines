@@ -37,6 +37,18 @@ import pubertyAndGrowing from "@/public/puberty_and_growing.png";
 import stayingHealthy from "@/public/staying_healthy.png";
 import { IFilter } from "./filter_data";
 import { StaticImageData } from "next/image";
+import HealthyBuildingImmunity from "@/public/HealthyBuildingImmunity.png";
+import HealthyReinforceChildLearning from "@/public/HealthyReinforceChildLearning.png";
+import HealthySelfSoothing from "@/public/HealthySelfSoothing.png";
+import HealthyStayingSafeInTheSun from "@/public/HealthyStayingSafeInTheSun.png";
+import HealthyMentalHealthCare from "@/public/HealthyMentalHealthCare.png";
+import NemoursAntibiotics from "@/public/NemoursAntibiotics.png";
+import NemoursCovidPandemic from "@/public/NemoursCovidPandemic.png";
+import NemoursGetVaccinated from "@/public/NemoursGetVaccinated.png";
+import NemoursHIVDrugCOVID from "@/public/NemoursHIVDrugCOVID.png";
+import NemoursWriteBiological from "@/public/NemoursWriteBiological.png";
+
+
 
 export interface IArticle {
   name: string;
@@ -44,6 +56,7 @@ export interface IArticle {
   statusId: string;
   ageRangeId: string;
   source: IFilter;
+  isFavorite?: boolean;
 }
 
 export const youngKidsArticleData: IArticle[] = [
@@ -279,3 +292,4 @@ export const youngKidsArticleData: IArticle[] = [
     source: { id: "h2wRKGfculskIaKz", name: "National Geographic For Kids" },
   },
 ];
+
