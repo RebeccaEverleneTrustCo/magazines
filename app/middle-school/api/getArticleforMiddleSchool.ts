@@ -59,8 +59,9 @@ const imageMap: { [key: string]: StaticImageData } = {
     howCanSyntheticProteinsHelpPrematureBabies
   };
   
-  async function fetchMiddleSchoolArticleData(): Promise<IArticle[]> {
-    const response = await fetch(API_URLS.GET_MIDDLESCHOOL_API_URL);
+  async function fetchArticleData(category: string): Promise<IArticle[]> {
+    // const response = await fetch(API_URLS.GET_MIDDLESCHOOL_API_URL);
+    const response = await fetch(API_URLS.GET_CATEGORY_API_URL(category));
     const data = await response.json();
   
     return data.map((article: any) => ({
@@ -71,7 +72,7 @@ const imageMap: { [key: string]: StaticImageData } = {
   
   let middleSchoolArticleData: IArticle[] = [];
   
-  fetchMiddleSchoolArticleData().then((data) => {
+  fetchArticleData("middleschool").then((data) => {
     middleSchoolArticleData = data;
   });
   

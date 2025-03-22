@@ -1,5 +1,6 @@
 import { StaticImageData } from "next/image";
 import whyDoWeYawnHighlights from "@/public/why_do_we_yawn_highlights.png";
+import theHeartsPurposeAndFunction from "@/public/the_hearts_purpose_and_function_kids_discover.png"
 import beMindfulTimesMagazineKids from "@/public/be_mindful_times_magazine_kids.png";
 import allAboutBonesTimesMagazineKids from "@/public/all_about_bones_times_magazine_kids.png";
 import brainpowerCricketMuseMagazine from "@/public/brainpower_cricket_muse_magazine.jpg";
@@ -28,16 +29,14 @@ import aSaferSportTimesMagazineKids from "@/public/a_safer_sport_times_magazine_
 import feelingTheHeatTimesMagazineKids from "@/public/feeling_the_heat_times_magazine_kids.png";
 import summerSafetyTimesMagazineKids from "@/public/summer_safety_times_magazine_kids.png";
 
-
-
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import { API_URLS } from "@/app/appConstants/apiUrlContants";
 
 const imageMap: { [key: string]: StaticImageData } = {
+  brainpowerCricketMuseMagazine,
     whyDoWeYawnHighlights,
     beMindfulTimesMagazineKids,
     allAboutBonesTimesMagazineKids,
-    brainpowerCricketMuseMagazine,
     theWayISeeItCricketMuseMagazine,
     hereAndNowCricketMuseMagazine,
     makeAndPlayCricketMuseMagazine,
@@ -46,6 +45,7 @@ const imageMap: { [key: string]: StaticImageData } = {
     whyDoWeLoseOurVoiceHighlights,
     howDoesYourHeartPumpBloodHighlights,
     whatIsEarCartilageHighlights,
+    theHeartsPurposeAndFunction,
     howBonesWorkKidsDiscover,
     howTheEyesWorkKidsDiscover,
     theHeartsPurposeAndFunctionKidsDiscover,
@@ -64,24 +64,45 @@ const imageMap: { [key: string]: StaticImageData } = {
     summerSafetyTimesMagazineKids
   };
   
-  async function fetchYoungKidsArticleData(): Promise<IArticle[]> {
-    const response = await fetch('/api/articles');
+  // async function fetchYoungKidsArticleData(category: string): Promise<IArticle[]> {
     
-    // const response = await fetch(API_URLS.GET_YOUNGKIDS_API_URL);
+  //     const response = await fetch(API_URLS.GET_CATEGORY_API_URL(category));
+  //   // const response = await fetch('/api/articles');
+  //   // const response = await fetch(API_URLS.GET_YOUNGKIDS_API_URL);
+  //   const data = await response.json();
+  //   console.log("data for young",data);
+  
+  //   return data.map((article: any) => ({
+  //     ...article,
+  //     img: imageMap[article.img],
+  //   }));
+  // }
+  
+  // let youngKidsArticleData: IArticle[] = [];
+  
+  // fetchYoungKidsArticleData().then((data) => {
+  //   youngKidsArticleData = data;
+  // });
+  
+  // export { youngKidsArticleData };
+  // export type { IArticle };
+  
+  async function fetchArticleData(category: string): Promise<IArticle[]> {
+    const response = await fetch(API_URLS.GET_CATEGORY_API_URL(category));
     const data = await response.json();
+    console.log(`data for ${category}:`, data);
   
     return data.map((article: any) => ({
       ...article,
-      img: imageMap[article.img],
+      img: imageMap[article.img], // Assuming you have an imageMap object
     }));
   }
   
   let youngKidsArticleData: IArticle[] = [];
   
-  fetchYoungKidsArticleData().then((data) => {
+  fetchArticleData("youngkids").then((data) => {
     youngKidsArticleData = data;
   });
   
   export { youngKidsArticleData };
   export type { IArticle };
-  

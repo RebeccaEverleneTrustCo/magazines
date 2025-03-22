@@ -1,3 +1,4 @@
+"use client"
 import styles from "./article_card.module.css";
 import Image, { StaticImageData } from "next/image";
 import { HeartOutlined, Heart } from "../heart";
@@ -13,15 +14,16 @@ function ArticleCard({
   title,
   subtitle,
   isFavorite,
+  category,
 }: {
-  src: StaticImageData;
+  src: string;
   title: string;
   subtitle: string;
   isFavorite: boolean;
+  category: string;
 }) {
   const [isFavoriteState, setIsFavoriteState] = React.useState(isFavorite);
   const [showDetails, setShowDetails] = React.useState(false);
-
   const toggleFavorite = () => {
     setIsFavoriteState(!isFavoriteState);
     // dispatch({
@@ -34,9 +36,9 @@ function ArticleCard({
     setShowDetails(!showDetails);
     //navigator.clipboard.writeText("https://www.google.com");
   };
-  const router = useRouter();
-  const pathname = usePathname();
-
+  // const router = useRouter();
+  // const pathname = usePathname();
+console.log("Category",category);
   return (
     <div className={`${styles.card} flex-column`}>
       <div className={`image ${styles.cardImg}`}>
@@ -47,7 +49,7 @@ function ArticleCard({
 
       <span className={styles.subtitle}>{subtitle}</span>
       <div className={`flex-row ${styles.buttonWrapper}`}>
-      <Link href={`/article-detail/${title}`} passHref>
+      <Link href={`/${category}/${encodeURIComponent(title)}`} passHref>
              <button className={styles.viewMoreButton}>
                View more
              </button>

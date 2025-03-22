@@ -14,6 +14,7 @@ interface PageContentProps {
   filterFilteredArticleList: IArticle[];
   mascot: StaticImageData;
   headerTitle: string;
+  category: string;
 }
 
 const PageContent: React.FC<PageContentProps> = ({
@@ -22,10 +23,14 @@ const PageContent: React.FC<PageContentProps> = ({
   filterFilteredArticleList,
   mascot,
   headerTitle,
+  category,
 }) => {
-  
+
+  filterFilteredArticleList.map((article: IArticle) => {
+    console.log("Articles:", article); // Debug each article's image path
+  });
+
   return (
-    
     <div className={`flex-column ${styles.main}`}>
       <CollectionHeader src={mascot} headerTitle={headerTitle} />
       <div className={`${styles.body}`}>
@@ -51,7 +56,7 @@ const PageContent: React.FC<PageContentProps> = ({
                       title={article.name}
                       subtitle={article.source.name}
                       isFavorite={article.isFavorite ?? false}
-                      
+                      category={category}
                     />
                   ))
                 )}

@@ -24,6 +24,7 @@ function YoungKids() {
     filterFilteredArticleList={state.filteredArticleList} 
     mascot={youngKidsMascot} 
     headerTitle="Young Kids"
+    category="youngkids"
     />
   );
 }

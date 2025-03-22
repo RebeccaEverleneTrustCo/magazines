@@ -20,6 +20,7 @@ function Parents() {
       filterFilteredArticleList={state.filteredArticleList}
       mascot={parentMascot}
       headerTitle="Parents"
+      category="parents"
     />
   );
 }

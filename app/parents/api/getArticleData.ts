@@ -25,9 +25,9 @@ const imageMap: { [key: string]: StaticImageData } = {
   NemoursWriteBiological,
 };
 
-async function fetchParentsArticleData(): Promise<IArticle[]> {
-  // const response = await fetch(API_URLS.GET_PARENT_API_URL);
-  const response = await fetch('/api/articles');
+async function fetchArticleData(category: string): Promise<IArticle[]> {
+  const response = await fetch(API_URLS.GET_CATEGORY_API_URL(category));
+  // const response = await fetch('/api/articles');
   const data = await response.json();
 
   return data.map((article: any) => ({
@@ -38,7 +38,7 @@ async function fetchParentsArticleData(): Promise<IArticle[]> {
 
 let parentsArticleData: IArticle[] = [];
 
-fetchParentsArticleData().then((data) => {
+fetchArticleData("parents").then((data) => {
   parentsArticleData = data;
 });
 

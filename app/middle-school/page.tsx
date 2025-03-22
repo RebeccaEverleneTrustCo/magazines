@@ -24,6 +24,7 @@ function MiddleSchool() {
     filterFilteredArticleList={state.filteredArticleList} 
     mascot={middleschoolMascot} 
     headerTitle="Middle School"
+    category="middleschool"
     />
   );
 }

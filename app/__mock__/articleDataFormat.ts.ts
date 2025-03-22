@@ -7,6 +7,7 @@ export interface IFilter {
 export interface IArticle {
   name: string;
   img: StaticImageData;
+  description: string;
   statusId: string;
   ageRangeId?: string;
   source: IFilter;
