@@ -1,0 +1,190 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.section {
+  height: min(100vh, auto);
+  width: 100%;
+  padding-inline: 2rem;
+  padding-block: 2rem;
+}
+
+.headerBg {
+  background-image: url("../public/header_bg.png");
+  background-size: cover;
+}
+
+.headerTextSection {
+  align-items: flex-start;
+  margin-right: min(4rem, 4vw);
+}
+
+.headerTextSection > *:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.headerTitle {
+  max-width: 37rem;
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-medium);
+  position: relative;
+
+  line-height: calc(1.3 * var(--fs-h1));
+}
+
+.headerSubtitle {
+  font-size: var(--fs-150);
+  font-weight: var(--fw-regular);
+  max-width: 37rem;
+}
+
+.titleImg {
+  position: absolute;
+  width: auto;
+}
+
+.shapeImg {
+  height: 5.375rem;
+
+  top: 1rem;
+  left: 23rem;
+}
+
+.magnifyingGlassImg {
+  height: 4.53rem;
+
+  bottom: 1rem;
+  left: 27rem;
+}
+
+.exploreButton {
+  background: linear-gradient(
+    90deg, 
+    var(--clr-gradient-turquoise),
+    var( --clr-gradient-yellow)
+  );
+  font-size: var(--fs-button-text);
+  padding-block: 0.7rem;
+  padding-inline: 2rem;
+}
+
+.exploreButton > *:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.headerImg {
+  height: 43rem;
+  width: auto;
+}
+
+.h2 {
+  display: block;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-semibold);
+  text-align: center;
+  margin-top: 5rem;
+  /* margin-block: 5rem; */
+}
+
+.ageRangeSection.section {
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.ageRangeSection > * {
+  flex: 1;
+  min-width: max(37rem, 40vw);
+  height: 38rem;
+  /* width: 50vw; */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 100%;
+  padding: 2rem;
+}
+
+/* .ageRangeSection >* :nth-child(odd){
+  justify-content: flex-end;
+}
+.ageRangeSection >* :nth-child(even){
+  justify-content: flex-start;
+} */
+
+.ageRangeMascot {
+  width: 13rem;
+  height: 14.5rem;
+  margin-right: 1rem;
+}
+
+.youngKidsGradient {
+  background: linear-gradient(
+    45deg,
+    var(--clr-gradient-turquoise),
+    var(--clr-gradient-yellow)
+  );
+  justify-content: flex-end;
+}
+
+.middleSchoolGradient {
+  background: linear-gradient(
+    -45deg,
+    var(--clr-gradient-red),
+    var(--clr-gradient-light-blue)
+  );
+  justify-content: flex-start;
+}
+
+.highSchoolGradient {
+  background: linear-gradient(
+    45deg,
+    var(--clr-gradient-light-red),
+    var(--clr-gradient-light-green)
+  );
+  justify-content: flex-end;
+}
+
+.parentsGradient {
+  background: linear-gradient(
+    -45deg,
+    var(--clr-gradient-sky-blue),
+    var(--clr-gradient-indigo)
+  );
+  justify-content: flex-start;
+}
+
+.discoverSection {
+  min-height: 100vh;
+  justify-content: flex-start;
+
+  background: linear-gradient(
+    -4.19deg,
+    rgba(30, 118, 249, 1),
+    rgba(46, 215, 238, 1)
+  );
+}
+
+.alphaOrderRow {
+  flex-wrap: wrap;
+  max-width: 55rem;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+
+.magazineRow {
+  min-height: 31.5rem;
+  max-width: 72rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media (max-width: 1183px) {
+  .youngKidsGradient,
+  .middleSchoolGradient,
+  .highSchoolGradient,
+  .parentsGradient {
+    justify-content: center;
+  }
+}
