@@ -1,7 +1,8 @@
+
 "use client";
 import youngKidsMascot from "@/public/young_kids_mascot.svg";
-import { filterData } from "../__mock__/filter_data";
-import { youngKidsArticleData } from "../__mock__/article_data";
+import { filterData } from "./api/filter_data_youngkids";
+import { youngKidsArticleData } from "./api/getArticleforYoungkids";
 import React from "react";
 import { ActionType } from "../store/actionTypes";
 import { ICollectionState } from "../store/stateTypes";
@@ -24,8 +25,10 @@ function YoungKids() {
     filterFilteredArticleList={state.filteredArticleList} 
     mascot={youngKidsMascot} 
     headerTitle="Young Kids"
+    category="youngkids"
     />
   );
 }
 
 export default YoungKids;
+

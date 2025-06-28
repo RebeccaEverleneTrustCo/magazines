@@ -1,4 +1,4 @@
-import { IArticle } from "@/app/__mock__/article_data";
+import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import { IFilter } from "../parents/api/filter_data_parents";
 import { ActionType } from "./actionTypes";
 import { IFilterHash } from "@/app/store/IFilterHash";

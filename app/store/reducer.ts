@@ -1,6 +1,8 @@
 import { ICollectionState, IAction } from "@/app/store/stateTypes"; 
 import { ActionType } from "@/app/store/actionTypes";
-import { IArticle } from "@/app/__mock__/article_data";
+
+import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
+
 
 function filterArticles(state: ICollectionState): IArticle[] {
   const sourceIds = Object.keys(state.selectedSourceIds);
@@ -71,6 +73,7 @@ export function reducer(
         loadingFilters: false,
         articleList: [...action.payload.articleList],
         filteredArticleList: [...action.payload.articleList],
+        ageRangeList: [...action.payload.ageRangeList],
         loadingArticles: false,
       };
     case ActionType.ClearFilters:

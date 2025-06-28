@@ -9,7 +9,9 @@ import NemoursCovidPandemic from "@/public/NemoursCovidPandemic.png";
 import NemoursGetVaccinated from "@/public/NemoursGetVaccinated.png";
 import NemoursHIVDrugCOVID from "@/public/NemoursHIVDrugCOVID.png";
 import NemoursWriteBiological from "@/public/NemoursWriteBiological.png";
-import { IArticle } from "@/app/__mock__/article_data";
+
+import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
+
 import { API_URLS } from "@/app/appConstants/apiUrlContants";
 
 const imageMap: { [key: string]: StaticImageData } = {
@@ -25,8 +27,11 @@ const imageMap: { [key: string]: StaticImageData } = {
   NemoursWriteBiological,
 };
 
-async function fetchParentsArticleData(): Promise<IArticle[]> {
-  const response = await fetch(API_URLS.GET_PARENT_API_URL);
+
+async function fetchArticleData(category: string): Promise<IArticle[]> {
+  const response = await fetch(API_URLS.GET_CATEGORY_API_URL(category));
+  // const response = await fetch('/api/articles');
+
   const data = await response.json();
 
   return data.map((article: any) => ({
@@ -37,7 +42,9 @@ async function fetchParentsArticleData(): Promise<IArticle[]> {
 
 let parentsArticleData: IArticle[] = [];
 
-fetchParentsArticleData().then((data) => {
+
+fetchArticleData("parents").then((data) => {
+
   parentsArticleData = data;
 });
 

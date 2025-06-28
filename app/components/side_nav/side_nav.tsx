@@ -1,5 +1,7 @@
+
 import styles from "./side_nav.module.css";
 import { IFilter, IResult } from "../../__mock__/filter_data";
+import CheckBox from "../checkbox";
 import removeIcon from "@/public/remove_icon.svg";
 import Image from "next/image";
 import { ActionType } from "../../store/actionTypes";
@@ -7,36 +9,7 @@ import {  IAction } from "../../young-kids/page";
 import { IFilterHash } from "@/app/store/IFilterHash";
 import { ICollectionState } from "@/app/store/stateTypes";
 
-function CheckBox({
-  label,
-  group,
-  checked,
-  onClick,
-}: {
-  label: string;
-  group: string;
-  checked: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <div className={`flex-row ${styles.checkboxWrapper}`} onClick={onClick}>
-      <input
-        type="checkbox"
-        name={group}
-        value={label}
-        className={styles.checkbox}
-        checked={checked}
-      />
-      <span
-        className={`${styles.checkboxLabel} ${
-          checked ? styles.tcBlack : styles.tcGray
-        }`}
-      >
-        {label}
-      </span>
-    </div>
-  );
-}
+
 
 function SideNav({
   state,
@@ -157,3 +130,4 @@ function SideNav({
 }
 
 export default SideNav;
+

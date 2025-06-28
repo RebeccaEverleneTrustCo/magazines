@@ -1,3 +1,4 @@
+
 "use client";
 import styles from "./content_filter.module.css";
 import Image from "next/image";
@@ -33,3 +34,4 @@ function ContentFilter() {
 }
 
 export default ContentFilter;
+

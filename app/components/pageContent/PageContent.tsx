@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import HeaderBar from "@/app/components/header_bar/header_bar";
@@ -5,7 +6,7 @@ import SideNav from "@/app/components/side_nav/side_nav";
 import CollectionHeader from "@/app/components/collection_header/collection_header";
 import ContentFilter from "@/app/components/content_filter/content_filter";
 import ArticleCard from "@/app/components/article_card/article_card";
-import { IArticle } from "@/app/__mock__/article_data";
+import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import { StaticImageData } from "next/image";
 
 interface PageContentProps {
@@ -14,6 +15,7 @@ interface PageContentProps {
   filterFilteredArticleList: IArticle[];
   mascot: StaticImageData;
   headerTitle: string;
+  category: string;
 }
 
 const PageContent: React.FC<PageContentProps> = ({
@@ -22,10 +24,14 @@ const PageContent: React.FC<PageContentProps> = ({
   filterFilteredArticleList,
   mascot,
   headerTitle,
+  category,
 }) => {
-  
+
+  filterFilteredArticleList.map((article: IArticle) => {
+    console.log("Articles:", article); // Debug each article's image path
+  });
+
   return (
-    
     <div className={`flex-column ${styles.main}`}>
       <CollectionHeader src={mascot} headerTitle={headerTitle} />
       <div className={`${styles.body}`}>
@@ -51,6 +57,7 @@ const PageContent: React.FC<PageContentProps> = ({
                       title={article.name}
                       subtitle={article.source.name}
                       isFavorite={article.isFavorite ?? false}
+                      category={category}
                     />
                   ))
                 )}
@@ -64,3 +71,4 @@ const PageContent: React.FC<PageContentProps> = ({
 };
 
 export default PageContent;
+

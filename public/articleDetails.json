@@ -1,0 +1,119 @@
+  
+{
+    "categories": [
+      {
+        "id": "kids",
+        "name": "Kids"
+      },
+      {
+        "id": "health",
+        "name": "Health"
+      },
+      {
+        "id": "science",
+        "name": "Science"
+      },
+      {
+        "id": "technology",
+        "name": "Technology"
+      }
+    ],
+    "articles": [
+      {
+        "id": "brainpower",
+        "category": "kids",
+        "categoryDisplay": "Cricket - Muse Magazine",
+        "title": "Brainpower",
+        "summary": "Explore the power of your brain and how it works",
+        "image": "/placeholder.svg",
+        "content": "Discover fascinating facts about how your brain processes information and controls your body.",
+        "creator": "Cricket - Muse Magazine",
+        "statusId": "rNtJ7GnFBy4jgyUC",
+        "ageRangeId": "FpxVKwxvayQwYV3L",
+        "source": {
+          "id": "pWURKzsQW0NYBKem",
+          "name": "Cricket - Muse Magazine"
+        }
+      },
+      {
+        "id": "way-i-see-it",
+        "category": "kids",
+        "categoryDisplay": "Cricket - Muse Magazine",
+        "title": "The Way I See It",
+        "summary": "Different perspectives on the world around us",
+        "image": "/placeholder.svg",
+        "content": "Learn how different people see and experience the world in unique ways.",
+        "creator": "Cricket - Muse Magazine",
+        "statusId": "rNtJ7GnFBy4jgyUC",
+        "ageRangeId": "FpxVKwxvayQwYV3L",
+        "source": {
+          "id": "pWURKzsQW0NYBKem",
+          "name": "Cricket - Muse Magazine"
+        }
+      },
+      {
+        "id": "hear-and-now",
+        "category": "kids",
+        "categoryDisplay": "Cricket - Muse Magazine",
+        "title": "Hear & Now",
+        "summary": "Exploring the world of sound and music",
+        "image": "/placeholder.svg",
+        "content": "Discover how sound travels and how we perceive different sounds.",
+        "creator": "Cricket - Muse Magazine",
+        "statusId": "rNtJ7GnFBy4jgyUC",
+        "ageRangeId": "FpxVKwxvayQwYV3L",
+        "source": {
+          "id": "pWURKzsQW0NYBKem",
+          "name": "Cricket - Muse Magazine"
+        }
+      },
+      {
+        "id": "make-and-play",
+        "category": "kids",
+        "categoryDisplay": "Cricket - Muse Magazine",
+        "title": "Make and Play",
+        "summary": "Fun activities and crafts for young minds",
+        "image": "/placeholder.svg",
+        "content": "Create exciting projects and learn while having fun.",
+        "creator": "Cricket - Muse Magazine",
+        "statusId": "rNtJ7GnFBy4jgyUC",
+        "ageRangeId": "6ugoCKQIbfFBT6lE",
+        "source": {
+          "id": "pWURKzsQW0NYBKem",
+          "name": "Cricket - Muse Magazine"
+        }
+      },
+      {
+        "id": "1",
+        "category": "kids",
+        "categoryDisplay": "HighlightsKids",
+        "title": "Why do we lose our voice?",
+        "summary": "Learn about what happens to our vocal cords when we lose our voice.",
+        "image": "/lovable-uploads/759d05c7-7ecd-4e32-aa1c-d7a413a9279a.png",
+        "content": "That can happen when our vocal cords become irritated. The vocal cords are two folds of tissue near the top of the airway. When air from the lungs passes between them, they vibrate, making the sound we call our voice.\n\nBut if strain or infection makes them irritated and swollen, they vibrate differently. That can cause a raspy, \"hoarse\" sound that may be difficult to hear. Some people call that \"losing your voice.\"",
+        "creator": "Highlights",
+        "statusId": "rNtJ7GnFBy4jgyUC",
+        "ageRangeId": "FpxVKwxvayQwYV3L",
+        "source": {
+          "id": "B1DKDDNmgsn2YxLR",
+          "name": "Highlights"
+        }
+      },
+      {
+        "id": "2",
+        "category": "health",
+        "categoryDisplay": "HealthKids",
+        "title": "Why do heights make us dizzy?",
+        "summary": "Discover why being up high can make your head spin.",
+        "image": "/placeholder.svg",
+        "content": "When we're high up, our eyes and inner ear (which helps with balance) send different signals to our brain. This mismatch can make us feel dizzy or unsteady.",
+        "creator": "Highlights",
+        "statusId": "rNtJ7GnFBy4jgyUC",
+        "ageRangeId": "FpxVKwxvayQwYV3L",
+        "source": {
+          "id": "B1DKDDNmgsn2YxLR",
+          "name": "Highlights"
+        }
+      }
+    ]
+  }
