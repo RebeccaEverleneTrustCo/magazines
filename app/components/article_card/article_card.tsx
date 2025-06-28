@@ -1,3 +1,4 @@
+
 "use client"
 import styles from "./article_card.module.css";
 import Image, { StaticImageData } from "next/image";
@@ -79,3 +80,4 @@ console.log("Category",category);
 }
 
 export default ArticleCard;
+

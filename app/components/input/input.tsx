@@ -1,3 +1,4 @@
+
 import styles from "./input.module.css";
 
 interface Input {
@@ -21,3 +22,4 @@ function Input({
 }
 
 export default Input;
+

@@ -1,3 +1,4 @@
+
 import styles from "./side_nav.module.css";
 import { IFilter, IResult } from "../../__mock__/filter_data";
 import CheckBox from "../checkbox";
@@ -129,3 +130,4 @@ function SideNav({
 }
 
 export default SideNav;
+

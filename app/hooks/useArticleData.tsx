@@ -1,3 +1,4 @@
+
 import { useReducer, useEffect, useState } from "react";
 import { ActionType } from "../store/actionTypes";
 import { initialState } from "../store/initialState";
@@ -24,5 +25,6 @@ const useArticleData = (initialArticleData: IArticle[], filterData : IResult) =>
 
   return { state, dispatch };
 };
+
 
 export default useArticleData;

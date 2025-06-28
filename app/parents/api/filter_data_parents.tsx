@@ -1,3 +1,4 @@
+
 export interface IFilter {
     id: string;
     name: string;
@@ -28,4 +29,3 @@ export interface IFilter {
       { id: "r4vRFpceW7JwLIM86", name: "US News" }
     ],
   };
-  

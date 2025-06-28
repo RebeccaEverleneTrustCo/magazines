@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import HeaderBar from "@/app/components/header_bar/header_bar";
@@ -70,3 +71,4 @@ const PageContent: React.FC<PageContentProps> = ({
 };
 
 export default PageContent;
+

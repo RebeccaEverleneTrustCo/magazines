@@ -1,3 +1,4 @@
+
 import styles from "./header_bar.module.css";
 import Input from "../input/input";
 import { initialState } from "../../store/initialState";
@@ -50,3 +51,4 @@ function HeaderBar({
 }
 
 export default HeaderBar;
+
