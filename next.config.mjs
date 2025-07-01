@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
@@ -13,3 +14,20 @@ const nextConfig = {
 };
 
 export default nextConfig;
+=======
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'images.unsplash.com',
+            // port: '',
+            // pathname: '/account123/**',
+          },
+        ],
+      },
+};
+
+export default nextConfig;
+>>>>>>> origin/main

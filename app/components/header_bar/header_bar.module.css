@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .wrapper {
   width: 100%;
   /* padding-inline: 1rem; */
@@ -20,3 +21,27 @@
   font-size: var(--fs-225);
 }
 
+=======
+.wrapper {
+  width: 100%;
+  /* padding-inline: 1rem; */
+  justify-content: space-between;
+}
+
+.breadcrumbWrapper {
+  align-items: flex-start;
+}
+
+.navText {
+  font-size: var(--fs-nav-text);
+}
+
+.tcGray {
+  color: var(--clr-text-gray);
+}
+
+.collectionText {
+  font-size: var(--fs-225);
+}
+
+>>>>>>> origin/main

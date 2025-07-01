@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { ICollectionState, IAction } from "@/app/store/stateTypes";
 import { ActionType } from "@/app/store/actionTypes";
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
@@ -28,6 +29,19 @@ function filterArticles(state: ICollectionState): IArticle[] {
       !selectedStatusId || article.statusId === selectedStatusId;
 
     return matchesSource && matchesAgeRange && matchesStatus;
+=======
+import { ICollectionState, IAction } from "@/app/store/stateTypes"; 
+import { ActionType } from "@/app/store/actionTypes";
+
+import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
+
+
+function filterArticles(state: ICollectionState): IArticle[] {
+  const sourceIds = Object.keys(state.selectedSourceIds);
+
+  return state.articleList.filter((article: IArticle) => {
+    return sourceIds.length === 0 || sourceIds.includes(article.source.id);
+>>>>>>> origin/main
   });
 }
 
@@ -68,11 +82,14 @@ export function reducer(
         ...state,
         selectedSourceIds: { ...action.payload.selectedSourceIds },
       };
+<<<<<<< HEAD
     case ActionType.SetSelectedAgeRange:
       return {
         ...state,
         selectedAgeRangeIds: { ...action.payload.selectedAgeRangeIds },
       };
+=======
+>>>>>>> origin/main
     case ActionType.AddArticleList:
       return {
         ...state,

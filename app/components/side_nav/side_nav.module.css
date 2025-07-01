@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .sideNav {
   display: flex;
   flex-direction: column;
@@ -128,3 +129,135 @@
 .clearIcon {
   cursor: pointer;
 }
+=======
+.sideNav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.filterTypeTitle {
+  font-size: var(--fs-150);
+  margin-bottom: 1rem;
+}
+
+.filterTypeTitle:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.checkbox {
+  --dimension: 1.25rem;
+  -webkit-appearance: initial;
+  appearance: initial;
+  width: var(--dimension);
+  height: var(--dimension);
+  border: 1px solid rgb(166, 166, 166);
+  border-radius: 0.3125rem;
+
+  /* border: none; */
+  /* background: gray; */
+  position: relative;
+}
+.checkbox:checked {
+  /* background: black; */
+  /* background: linear-gradient(140deg, #ff6a6a 0%, #e6ff59 40%, #41c4fc 98%); */
+  background: linear-gradient(
+    90deg,
+    var(--clr-gradient-turquoise),
+    var(--clr-gradient-yellow)
+  );
+  border: none;
+}
+.checkbox:checked:after {
+  /* Heres your symbol replacement - this is a tick in Unicode. */
+  content: "\2713";
+  /* content: ""; */
+  color: #000;
+  /* The following positions my tick in the center, 
+   * but you could just overlay the entire box
+   * with a full after element with a background if you want to */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  /*
+   * If you want to fully change the check appearance, use the following:
+   * content: " ";
+   * width: 100%;
+   * height: 100%;
+   * background: blue;
+   * top: 0;
+   * left: 0;
+   */
+}
+
+/* .checkbox {
+  --dimension: 1.25rem;
+  height: var(--dimension);
+  width: var(--dimension);
+
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0.3125rem;
+  border: 1px solid rgb(166, 166, 166);
+}
+
+.checkbox:checked {
+
+  appearance: auto;
+  background-color: red;
+  border-radius: 0.3125rem;
+
+  
+} */
+
+.checkboxWrapper {
+  max-width: 18rem;
+  margin-bottom: 0.5rem;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.checkboxLabel {
+  /* color: var(--clr-text-gray); */
+  margin-left: 0.5rem;
+}
+
+.tcGray {
+  color: var(--clr-text-gray);
+}
+
+.tcBlack {
+  color: black;
+}
+
+.buttonWrapper {
+  margin-top: 2rem;
+  justify-content: flex-start;
+}
+
+.applyButton {
+  background: linear-gradient(
+    90deg,
+    var(--clr-gradient-turquoise),
+    var(--clr-gradient-yellow)
+  );
+  font-size: var(--fs-button-text);
+  padding-block: 0.7rem;
+  padding-inline: 2rem;
+  margin-right: 1rem;
+}
+
+.clearButton {
+  border-radius: 100%;
+  border: 0.5px solid var(--clr-text-gray);
+  padding: 0.5rem;
+}
+.clearIcon {
+  cursor: pointer;
+}
+>>>>>>> origin/main
