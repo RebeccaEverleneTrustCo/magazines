@@ -3,7 +3,7 @@ import styles from "./content_filter.module.css";
 import Image from "next/image";
 import downArrow from "@/public/down_arrow.svg";
 
-function ContentFilter() {
+function ContentFilter() { 
   return (
     <>
       <span className={styles.filterTypeTitle}>Filter</span>
