@@ -4,10 +4,7 @@ import React, { useEffect, useState } from "react";
 import { API_URLS } from "../../appConstants/apiUrlContants";
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import ArticleDetail from "../../components/articleDetailsCards/ArticleDetail";
-<<<<<<< HEAD
 import { getItems } from "@/app/store/localStorageHelper";
-=======
->>>>>>> origin/main
 
 interface ArticleDetailsProps {
   params: { articleName: string; category: string };
@@ -30,12 +27,8 @@ const ArticleDetailsCards: React.FC<ArticleDetailsProps> = ({ params }) => {
         if (!apiUrl) throw new Error("Invalid category");
 
         const response = await fetch(apiUrl);
-<<<<<<< HEAD
         if (!response.ok)
           throw new Error(`HTTP error! Status: ${response.status}`);
-=======
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
->>>>>>> origin/main
 
         const data: IArticle[] = await response.json();
         console.log("Fetched articles:", data);
@@ -50,13 +43,9 @@ const ArticleDetailsCards: React.FC<ArticleDetailsProps> = ({ params }) => {
           const normalizedItemName = normalizeString(item.name);
           const normalizedDecodedName = normalizeString(decodedArticleName);
 
-<<<<<<< HEAD
           console.log(
             `Checking "${normalizedItemName}" against "${normalizedDecodedName}"`
           );
-=======
-          console.log(`Checking "${normalizedItemName}" against "${normalizedDecodedName}"`);
->>>>>>> origin/main
           return normalizedItemName === normalizedDecodedName;
         });
 
@@ -80,15 +69,12 @@ const ArticleDetailsCards: React.FC<ArticleDetailsProps> = ({ params }) => {
   if (loading) return <p>Loading article details...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!article) return <p>Article not found.</p>;
-<<<<<<< HEAD
   const items = getItems("likedItems");
   items.forEach((item) => {
     if (item === article.name) {
       article.isFavorite = true;
     }
   });
-=======
->>>>>>> origin/main
 
   return (
     <ArticleDetail

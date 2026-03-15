@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { StaticImageData } from "next/image";
 export interface IFilter {
   id: string;
@@ -18,25 +17,3 @@ export interface IResult {
   sourcesList: IFilter[];
   ageRangeList?: IFilter[];
 }
-=======
-
-import { StaticImageData } from "next/image";
-export interface IFilter {
-  id: string;
-  name: string;
-}
-export interface IArticle {
-  name: string;
-  img: StaticImageData;
-  description: string;
-  statusId: string;
-  ageRangeId?: string;
-  source: IFilter;
-  isFavorite?: boolean;
-}
-export interface IResult {
-  statusList: IFilter[];
-  sourcesList: IFilter[];
-  ageRangeList?: IFilter[];
-}
->>>>>>> origin/main
