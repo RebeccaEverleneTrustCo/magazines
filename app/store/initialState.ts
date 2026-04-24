@@ -13,4 +13,5 @@ export const initialState = {
   loadingArticles: true,
   selectedFavoriteIds: {},
   searchText: "",
+  sortType: "all",
 };
