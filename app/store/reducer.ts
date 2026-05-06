@@ -1,9 +1,6 @@
 import { ICollectionState, IAction } from "@/app/store/stateTypes";
 import { ActionType } from "@/app/store/actionTypes";
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
-import { getItems } from "@/app/store/localStorageHelper";
-
-/* FILTER ARTICLES */
 
 function filterArticles(state: ICollectionState): IArticle[] {
   const selectedSourceIds = Object.keys(state.selectedSourceIds);
@@ -11,120 +8,143 @@ function filterArticles(state: ICollectionState): IArticle[] {
   const selectedStatusId = state.selectedStatus?.id;
 
   return state.articleList.filter((article: IArticle) => {
-
     const matchesSource =
       selectedSourceIds.length === 0 ||
       selectedSourceIds.includes(article.source.id);
 
     const matchesAgeRange =
       selectedAgeRangeIds.length === 0 ||
-      (article.ageRangeId &&
+      (article.ageRangeId != null &&
         selectedAgeRangeIds.includes(article.ageRangeId));
 
     const matchesStatus =
       !selectedStatusId || article.statusId === selectedStatusId;
 
     return matchesSource && matchesAgeRange && matchesStatus;
-
   });
 }
 
-/* SEARCH */
-
 function searchArticles(state: ICollectionState): IArticle[] {
-
   const searchText = state.searchText ? state.searchText : "";
 
-  return state.articleList.filter((article: IArticle) =>
-    searchText.length === 0 ||
-    article.name.toLowerCase().includes(searchText.toLowerCase())
-  );
+  return state.articleList.filter((article: IArticle) => {
+    return (
+      searchText.length === 0 ||
+      article.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+  });
 }
 
-/* SORT / FILTER */
-
-function applyContentFilter(
-  articles: IArticle[],
-  sortType: string
-): IArticle[] {
-
-  let result = [...articles];
-
-  if (sortType === "all") {
-    return result;
-  }
-
-  if (sortType === "likes") {
-
-    const likedItems = getItems("likedItems") || [];
-
-    result = result.filter((article) =>
-      likedItems.includes(article.name)
-    );
-  }
-
-  if (sortType === "recent") {
-    result = [...result].reverse();
-  }
-
-  return result;
+function fetchArticles(state: ICollectionState): IArticle[] {
+  return state.articleList;
 }
 
 export function reducer(
   state: ICollectionState,
   action: IAction
 ): ICollectionState {
-
   switch (action.type) {
+    case ActionType.AddFilterData:
+      return {
+        ...state,
+        statusList: [...action.payload.statusList],
+        sourceList: [...action.payload.sourceList],
+        loadingFilters: false,
+      };
+
+    case ActionType.SetSelectedStatus:
+      return {
+        ...state,
+        selectedStatus: action.payload.selectedStatus,
+      };
+
+    case ActionType.SetSelectedSources:
+      return {
+        ...state,
+        selectedSourceIds: { ...action.payload.selectedSourceIds },
+      };
+
+    case ActionType.SetSelectedAgeRange:
+      return {
+        ...state,
+        selectedAgeRangeIds: { ...action.payload.selectedAgeRangeIds },
+      };
+
+    case ActionType.AddArticleList:
+      return {
+        ...state,
+        articleList: [...action.payload.articleList],
+        filteredArticleList: [...action.payload.articleList],
+        loadingArticles: false,
+      };
+
+    case ActionType.SetFilteredArticles:
+      return {
+        ...state,
+        filteredArticleList: filterArticles({
+          ...state,
+          articleList: action.payload.articleList,
+        }),
+        loadingArticles: false,
+      };
 
     case ActionType.AddAllData:
       return {
         ...state,
         statusList: [...action.payload.statusList],
         sourceList: [...action.payload.sourceList],
-        ageRangeList: [...action.payload.ageRangeList],
+        loadingFilters: false,
         articleList: [...action.payload.articleList],
         filteredArticleList: [...action.payload.articleList],
-        loadingFilters: false,
+        ageRangeList: [...action.payload.ageRangeList],
         loadingArticles: false,
       };
 
-    case ActionType.SetFilteredArticles:
-
-      return {
-        ...state,
-        filteredArticleList: filterArticles(state),
-      };
-
-    case ActionType.SetSearchText:
-
-      return {
-        ...state,
-        searchText: action.payload.searchText,
-        filteredArticleList: searchArticles(state),
-      };
-
-    case ActionType.SetSortType: {
-
-      const result = applyContentFilter(
-        state.articleList,
-        action.payload.sortType
-      );
-
-      return {
-        ...state,
-        sortType: action.payload.sortType,
-        filteredArticleList: result,
-      };
-    }
-
     case ActionType.ClearFilters:
-
       return {
         ...state,
         selectedSourceIds: {},
         selectedAgeRangeIds: {},
+        selectedStatus: null,
         filteredArticleList: [...state.articleList],
+      };
+
+    case ActionType.SetSearchText: {
+      if (!action.payload.searchText) {
+        return {
+          ...state,
+          filteredArticleList: fetchArticles(state),
+        };
+      }
+
+      return {
+        ...state,
+        searchText: action.payload.searchText,
+        filteredArticleList: searchArticles({
+          ...state,
+          articleList: state.articleList,
+        }),
+      };
+    }
+
+    // ⭐ SORT BY LIKES
+    case ActionType.SortByLikes:
+      return {
+        ...state,
+        filteredArticleList: [...state.filteredArticleList].sort(
+          (a: IArticle, b: IArticle) => (b.likes ?? 0) - (a.likes ?? 0)
+        ),
+      };
+
+    // ⭐ SORT BY MOST RECENT
+    case ActionType.SortByRecent:
+      return {
+        ...state,
+        filteredArticleList: [...state.filteredArticleList].sort(
+          (a: IArticle, b: IArticle) =>
+            new Date(b.publishDate ?? "").getTime() -
+            new Date(a.publishDate ?? "").getTime()
+        ),
       };
 
     default:

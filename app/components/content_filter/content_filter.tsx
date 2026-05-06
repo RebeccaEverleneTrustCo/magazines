@@ -4,64 +4,38 @@ import styles from "./content_filter.module.css";
 import Image from "next/image";
 import downArrow from "@/public/down_arrow.svg";
 import { ActionType } from "@/app/store/actionTypes";
-import { ICollectionState, IAction } from "@/app/store/stateTypes";
-import React from "react";
 
-function ContentFilter({
-  state,
-  dispatch,
-}: {
-  state: ICollectionState;
-  dispatch: React.Dispatch<IAction>;
-}) {
+interface Props {
+  dispatch: React.Dispatch<any>;
+}
 
-  const setFilter = (type: string) => {
-    dispatch({
-      type: ActionType.SetSortType,
-      payload: {
-        ...state,
-        sortType: type,
-      },
-    });
-  };
-
+function ContentFilter({ dispatch }: Props) {
   return (
     <>
       <span className={styles.filterTypeTitle}>Filter</span>
 
-      <div className={`flex-row justify-start`}>
+      <div className="flex-row justify-start">
+        <span className={styles.filter}>Category</span>
 
-        <span className={`${styles.filter}`}>Category</span>
-
-        {/* ALL */}
+        {/* SORT BY LIKES */}
         <div
           className={`${styles.filter} flex-row`}
+          onClick={() => dispatch({ type: ActionType.SortByLikes })}
           style={{ cursor: "pointer" }}
-          onClick={() => setFilter("all")}
-        >
-          All
-        </div>
-
-        {/* LIKES */}
-        <div
-          className={`${styles.filter} flex-row`}
-          style={{ cursor: "pointer" }}
-          onClick={() => setFilter("likes")}
         >
           Likes
-          <Image alt="Down Arrow" src={downArrow} className={styles.downArrow}/>
+          <Image src={downArrow} alt="arrow" className={styles.downArrow} />
         </div>
 
-        {/* MOST RECENT */}
+        {/* SORT BY RECENT */}
         <div
           className={`${styles.filter} flex-row`}
+          onClick={() => dispatch({ type: ActionType.SortByRecent })}
           style={{ cursor: "pointer" }}
-          onClick={() => setFilter("recent")}
         >
           Most Recent
-          <Image alt="Down Arrow" src={downArrow} className={styles.downArrow}/>
+          <Image src={downArrow} alt="arrow" className={styles.downArrow} />
         </div>
-
       </div>
     </>
   );
