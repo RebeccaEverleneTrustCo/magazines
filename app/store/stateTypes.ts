@@ -3,9 +3,8 @@ import { IFilter } from "../parents/api/filter_data_parents";
 import { ActionType } from "./actionTypes";
 import { IFilterHash } from "@/app/store/IFilterHash";
 
-
 export interface ICollectionState {
-  selectedStatus: IFilter;
+  selectedStatus: IFilter | null;
   statusList: IFilter[];
   selectedSourceIds: IFilterHash;
   sourceList: IFilter[];
@@ -21,5 +20,5 @@ export interface ICollectionState {
 
 export interface IAction {
   type: ActionType;
-  payload: ICollectionState;
+  payload: any;
 }

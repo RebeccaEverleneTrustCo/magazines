@@ -1,7 +1,7 @@
 import { IFilter } from "../parents/api/filter_data_parents";
 
 export const initialState = {
-  selectedStatus: {} as IFilter,
+  selectedStatus: null as IFilter | null,
   statusList: [],
   selectedSourceIds: {},
   sourceList: [],
@@ -13,4 +13,5 @@ export const initialState = {
   loadingArticles: true,
   selectedFavoriteIds: {},
   searchText: "",
+  sortType: "all",
 };

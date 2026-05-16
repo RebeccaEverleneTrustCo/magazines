@@ -2,13 +2,6 @@ import { ICollectionState, IAction } from "@/app/store/stateTypes";
 import { ActionType } from "@/app/store/actionTypes";
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 
-// function filterArticles(state: ICollectionState): IArticle[] {
-//   const sourceIds = Object.keys(state.selectedSourceIds);
-//   return state.articleList.filter((article: IArticle) => {
-//     return sourceIds.length === 0 || sourceIds.includes(article.source.id);
-//   });
-// }
-
 function filterArticles(state: ICollectionState): IArticle[] {
   const selectedSourceIds = Object.keys(state.selectedSourceIds);
   const selectedAgeRangeIds = Object.keys(state.selectedAgeRangeIds);
@@ -58,21 +51,25 @@ export function reducer(
         sourceList: [...action.payload.sourceList],
         loadingFilters: false,
       };
+
     case ActionType.SetSelectedStatus:
       return {
         ...state,
         selectedStatus: action.payload.selectedStatus,
       };
+
     case ActionType.SetSelectedSources:
       return {
         ...state,
         selectedSourceIds: { ...action.payload.selectedSourceIds },
       };
+
     case ActionType.SetSelectedAgeRange:
       return {
         ...state,
         selectedAgeRangeIds: { ...action.payload.selectedAgeRangeIds },
       };
+
     case ActionType.AddArticleList:
       return {
         ...state,
@@ -80,15 +77,17 @@ export function reducer(
         filteredArticleList: [...action.payload.articleList],
         loadingArticles: false,
       };
+
     case ActionType.SetFilteredArticles:
       return {
         ...state,
         filteredArticleList: filterArticles({
           ...state,
-          articleList: action.payload.articleList,
+          ...action.payload,
         }),
         loadingArticles: false,
       };
+
     case ActionType.AddAllData:
       return {
         ...state,
@@ -100,42 +99,55 @@ export function reducer(
         ageRangeList: [...action.payload.ageRangeList],
         loadingArticles: false,
       };
+
     case ActionType.ClearFilters:
       return {
         ...state,
         selectedSourceIds: {},
-        statusList: [...action.payload.statusList],
-        sourceList: [...action.payload.sourceList],
-        loadingFilters: false,
-        articleList: [...action.payload.articleList],
-        filteredArticleList: [...action.payload.articleList],
-        loadingArticles: false,
+        selectedAgeRangeIds: {},
+        selectedStatus: null,
+        filteredArticleList: [...state.articleList],
       };
+
     case ActionType.SetSearchText: {
-      if (action.payload.searchText?.length === 0) {
+      if (!action.payload.searchText) {
         return {
           ...state,
-          filteredArticleList: fetchArticles({
-            ...state,
-            articleList: action.payload.articleList,
-          }),
-          loadingArticles: false,
-        };
-      } else {
-        return {
-          ...state,
-          searchText: action.payload.searchText,
-          filteredArticleList: searchArticles({
-            ...state,
-            articleList: action.payload.articleList,
-          }),
-          loadingArticles: false,
+          filteredArticleList: fetchArticles(state),
         };
       }
+
+      return {
+        ...state,
+        searchText: action.payload.searchText,
+        filteredArticleList: searchArticles({
+          ...state,
+          articleList: state.articleList,
+        }),
+      };
     }
-    default: {
-      throw new Error("Action not recognized");
-    }
+
+    case ActionType.SortByLikes:
+      return {
+        ...state,
+        filteredArticleList: [...state.filteredArticleList].sort(
+          (a: IArticle, b: IArticle) => (b.likes ?? 0) - (a.likes ?? 0)
+        ),
+      };
+
+    case ActionType.SortByRecent:
+      return {
+        ...state,
+        filteredArticleList: [...state.filteredArticleList].sort(
+          (a: IArticle, b: IArticle) =>
+            new Date(b.publishDate ?? "").getTime() -
+            new Date(a.publishDate ?? "").getTime()
+        ),
+      };
+
+    default:
+      return state;
   }
 }
+
 export default reducer;

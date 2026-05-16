@@ -1,12 +1,14 @@
-import { useReducer, useEffect, useState } from "react";
+import { useReducer, useEffect } from "react";
 import { ActionType } from "../store/actionTypes";
 import { initialState } from "../store/initialState";
 import reducer from "../store/reducer";
 import { IArticle } from "../__mock__/articleDataFormat.ts";
 import { IResult } from "../__mock__/articleDataFormat.ts";
 
-
-const useArticleData = (initialArticleData: IArticle[], filterData : IResult) => {
+const useArticleData = (
+  initialArticleData: IArticle[],
+  filterData: IResult
+) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -20,7 +22,7 @@ const useArticleData = (initialArticleData: IArticle[], filterData : IResult) =>
         articleList: initialArticleData,
       },
     });
-  }, [initialArticleData]);
+  }, [initialArticleData, filterData]);
 
   return { state, dispatch };
 };
