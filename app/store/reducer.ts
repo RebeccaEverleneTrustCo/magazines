@@ -127,24 +127,6 @@ export function reducer(
       };
     }
 
-    case ActionType.SortByLikes:
-      return {
-        ...state,
-        filteredArticleList: [...state.filteredArticleList].sort(
-          (a: IArticle, b: IArticle) => (b.likes ?? 0) - (a.likes ?? 0)
-        ),
-      };
-
-    case ActionType.SortByRecent:
-      return {
-        ...state,
-        filteredArticleList: [...state.filteredArticleList].sort(
-          (a: IArticle, b: IArticle) =>
-            new Date(b.publishDate ?? "").getTime() -
-            new Date(a.publishDate ?? "").getTime()
-        ),
-      };
-
     default:
       return state;
   }
