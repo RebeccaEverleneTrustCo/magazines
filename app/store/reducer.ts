@@ -85,7 +85,7 @@ export function reducer(
         ...state,
         filteredArticleList: filterArticles({
           ...state,
-          articleList: action.payload.articleList,
+          ...action.payload,
         }),
         loadingArticles: false,
       };
@@ -104,38 +104,50 @@ export function reducer(
       return {
         ...state,
         selectedSourceIds: {},
-        statusList: [...action.payload.statusList],
-        sourceList: [...action.payload.sourceList],
-        loadingFilters: false,
-        articleList: [...action.payload.articleList],
-        filteredArticleList: [...action.payload.articleList],
-        loadingArticles: false,
+        selectedAgeRangeIds: {},
+        selectedStatus: null,
+        filteredArticleList: [...state.articleList],
       };
+
     case ActionType.SetSearchText: {
-      if (action.payload.searchText?.length === 0) {
+      if (!action.payload.searchText) {
         return {
           ...state,
-          filteredArticleList: fetchArticles({
-            ...state,
-            articleList: action.payload.articleList,
-          }),
-          loadingArticles: false,
-        };
-      } else {
-        return {
-          ...state,
-          searchText: action.payload.searchText,
-          filteredArticleList: searchArticles({
-            ...state,
-            articleList: action.payload.articleList,
-          }),
-          loadingArticles: false,
+          filteredArticleList: fetchArticles(state),
         };
       }
+
+      return {
+        ...state,
+        searchText: action.payload.searchText,
+        filteredArticleList: searchArticles({
+          ...state,
+          articleList: state.articleList,
+        }),
+      };
     }
-    default: {
-      throw new Error("Action not recognized");
-    }
+
+    case ActionType.SortByLikes:
+      return {
+        ...state,
+        filteredArticleList: [...state.filteredArticleList].sort(
+          (a: IArticle, b: IArticle) => (b.likes ?? 0) - (a.likes ?? 0)
+        ),
+      };
+
+    case ActionType.SortByRecent:
+      return {
+        ...state,
+        filteredArticleList: [...state.filteredArticleList].sort(
+          (a: IArticle, b: IArticle) =>
+            new Date(b.publishDate ?? "").getTime() -
+            new Date(a.publishDate ?? "").getTime()
+        ),
+      };
+
+    default:
+      return state;
   }
 }
+
 export default reducer;

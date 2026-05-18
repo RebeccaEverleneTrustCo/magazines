@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./page.module.css";
 import HeaderBar from "@/app/components/header_bar/header_bar";
 import SideNav from "@/app/components/side_nav/side_nav";
@@ -8,7 +8,6 @@ import ArticleCard from "@/app/components/article_card/article_card";
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import { StaticImageData } from "next/image";
 import { getItems } from "@/app/store/localStorageHelper";
-import { article } from "framer-motion/client";
 
 interface PageContentProps {
   state: any;
@@ -27,9 +26,11 @@ const PageContent: React.FC<PageContentProps> = ({
   headerTitle,
   category,
 }) => {
-  filterFilteredArticleList.map((article: IArticle) => {
-    //console.log("Articles:", article); // Debug each article's image path
-    const items = getItems("likedItems");
+
+  // Mark liked items
+  filterFilteredArticleList.forEach((article: IArticle) => {
+    const items = getItems("likedItems") || [];
+
     items.forEach((item) => {
       if (item === article.name) {
         article.isFavorite = true;
