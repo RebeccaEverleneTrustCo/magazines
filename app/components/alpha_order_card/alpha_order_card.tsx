@@ -1,4 +1,3 @@
-
 import styles from "./alpha_order_card.module.css";
 import Image, { StaticImageData } from "next/image";
 import cp from "@/public/cp.png";
@@ -54,5 +53,4 @@ export const AlphaOrderCard =({
     </div>
   );
 }
-
 

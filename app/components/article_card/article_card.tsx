@@ -1,12 +1,12 @@
-
-"use client"
+"use client";
 import styles from "./article_card.module.css";
 import Image, { StaticImageData } from "next/image";
 import { HeartOutlined, Heart } from "../heart";
-import React from "react";
+import React, { useEffect } from "react";
 import articleDetailsCards from "../articleDetailsCards/ArticleDetail";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
+import { addItem, getItems, deleteItem } from "@/app/store/localStorageHelper";
 
 const sampleUrl =
   "https://images.unsplash.com/photo-1633977264259-b3517c187e3d?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
@@ -31,15 +31,23 @@ function ArticleCard({
     //   type: ActionType.ToggleFavorite,
     //   payload: { name: title, source: { id: subtitle } },
     // });
+    const newItem = title;
+    addItem("likedItems", newItem);
   };
- 
+
+  const toggleNotFavorite = () => {
+    setIsFavoriteState(!isFavoriteState);
+    deleteItem("likedItems", title);
+  };
+
   const toggleDetails = () => {
     setShowDetails(!showDetails);
     //navigator.clipboard.writeText("https://www.google.com");
   };
   // const router = useRouter();
   // const pathname = usePathname();
-console.log("Category",category);
+  // console.log("Category", category);
+
   return (
     <div className={`${styles.card} flex-column`}>
       <div className={`image ${styles.cardImg}`}>
@@ -50,11 +58,9 @@ console.log("Category",category);
 
       <span className={styles.subtitle}>{subtitle}</span>
       <div className={`flex-row ${styles.buttonWrapper}`}>
-      <Link href={`/${category}/${encodeURIComponent(title)}`} passHref>
-             <button className={styles.viewMoreButton}>
-               View more
-             </button>
-         </Link>
+        <Link href={`/${category}/${encodeURIComponent(title)}`} passHref>
+          <button className={styles.viewMoreButton}>View more</button>
+        </Link>
         {/* <button
           className={styles.viewMoreButton}
           onClick={() => {
@@ -72,7 +78,7 @@ console.log("Category",category);
           />
         )}
         {isFavoriteState && (
-          <Heart className={styles.heartButton} onClick={toggleFavorite} />
+          <Heart className={styles.heartButton} onClick={toggleNotFavorite} />
         )}
       </div>
     </div>
@@ -80,4 +86,3 @@ console.log("Category",category);
 }
 
 export default ArticleCard;
-
