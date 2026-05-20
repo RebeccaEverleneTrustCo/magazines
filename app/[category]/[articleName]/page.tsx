@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { API_URLS } from "../../appConstants/apiUrlContants";
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import ArticleDetail from "../../components/articleDetailsCards/ArticleDetail";
+import { getItems } from "@/app/store/localStorageHelper";
 
 interface ArticleDetailsProps {
   params: { articleName: string; category: string };
@@ -26,7 +27,8 @@ const ArticleDetailsCards: React.FC<ArticleDetailsProps> = ({ params }) => {
         if (!apiUrl) throw new Error("Invalid category");
 
         const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        if (!response.ok)
+          throw new Error(`HTTP error! Status: ${response.status}`);
 
         const data: IArticle[] = await response.json();
         console.log("Fetched articles:", data);
@@ -41,7 +43,9 @@ const ArticleDetailsCards: React.FC<ArticleDetailsProps> = ({ params }) => {
           const normalizedItemName = normalizeString(item.name);
           const normalizedDecodedName = normalizeString(decodedArticleName);
 
-          console.log(`Checking "${normalizedItemName}" against "${normalizedDecodedName}"`);
+          console.log(
+            `Checking "${normalizedItemName}" against "${normalizedDecodedName}"`
+          );
           return normalizedItemName === normalizedDecodedName;
         });
 
@@ -65,6 +69,12 @@ const ArticleDetailsCards: React.FC<ArticleDetailsProps> = ({ params }) => {
   if (loading) return <p>Loading article details...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!article) return <p>Article not found.</p>;
+  const items = getItems("likedItems");
+  items.forEach((item) => {
+    if (item === article.name) {
+      article.isFavorite = true;
+    }
+  });
 
   return (
     <ArticleDetail

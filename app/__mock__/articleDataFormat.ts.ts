@@ -1,4 +1,3 @@
-
 import { StaticImageData } from "next/image";
 export interface IFilter {
   id: string;
