@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./page.module.css";
 import HeaderBar from "@/app/components/header_bar/header_bar";
 import SideNav from "@/app/components/side_nav/side_nav";
@@ -8,6 +7,7 @@ import ContentFilter from "@/app/components/content_filter/content_filter";
 import ArticleCard from "@/app/components/article_card/article_card";
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import { StaticImageData } from "next/image";
+import { getItems } from "@/app/store/localStorageHelper";
 
 interface PageContentProps {
   state: any;
@@ -27,15 +27,27 @@ const PageContent: React.FC<PageContentProps> = ({
   category,
 }) => {
 
-  filterFilteredArticleList.map((article: IArticle) => {
-    console.log("Articles:", article); // Debug each article's image path
+  // Mark liked items
+  filterFilteredArticleList.forEach((article: IArticle) => {
+    const items = getItems("likedItems") || [];
+
+    items.forEach((item) => {
+      if (item === article.name) {
+        article.isFavorite = true;
+      }
+    });
   });
+
 
   return (
     <div className={`flex-column ${styles.main}`}>
       <CollectionHeader src={mascot} headerTitle={headerTitle} />
       <div className={`${styles.body}`}>
-        <HeaderBar state={state} dispatch={dispatch} headerTitle={headerTitle} />
+        <HeaderBar
+          state={state}
+          dispatch={dispatch}
+          headerTitle={headerTitle}
+        />
 
         {state.loadingFilters ? (
           <span className={`text-align-center ${styles.loaderText}`}>
@@ -71,4 +83,3 @@ const PageContent: React.FC<PageContentProps> = ({
 };
 
 export default PageContent;
-

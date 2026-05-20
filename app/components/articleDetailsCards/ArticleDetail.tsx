@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import backIcon from "@/public/back.svg";
 import { useRouter } from "next/navigation";
 import styles from "./articleDetailsCards.module.css"; // Adjust path if needed
@@ -11,6 +11,8 @@ import { Heart, HeartOutlined } from "../heart";
 import { middleSchoolArticleData } from "@/app/middle-school/api/getArticleforMiddleSchool";
 import { parentsArticleData } from "@/app/parents/api/getArticleData";
 import { Checkbox } from "@mui/material";
+import { addItem, getItems, deleteItem } from "@/app/store/localStorageHelper";
+import { highSchoolArticleData } from "@/app/high-school/api/getArticleforHighSchool";
 
 function ArticleDetail({
   article,
@@ -19,23 +21,109 @@ function ArticleDetail({
   article: IArticle;
   category: string;
 }) {
+  const [checked, setChecked] = useState(false);
   const [isFavoriteState, setIsFavoriteState] = useState(article.isFavorite);
   const router = useRouter();
-  const toggleFavorite = () => {
-    setIsFavoriteState(!isFavoriteState);
-  };
 
-  // Function to get the article data based on category
+  // Define status IDs as constants
+  const finishedStatusId = "Karlh7QHaQrS7G3c";
+  const unfinishedStatusId = "rNtJ7GnFBy4jgyUC";
+
+  // Helper function to get the correct data array based on category
   const getCategoryData = (category: string) => {
     switch (category) {
       case "youngkids":
         return youngKidsArticleData;
       case "middleschool":
         return middleSchoolArticleData;
+      case "highschool":
+        return highSchoolArticleData;
       case "parents":
         return parentsArticleData;
       default:
         return [];
+    }
+  };
+
+  // Helper function to update article status in data array
+  const updateArticleStatusInDataArray = (
+    articleName: string,
+    newStatusId: string
+  ) => {
+    const dataArray = getCategoryData(category);
+    const articleInData = dataArray.find((item) => item.name === articleName);
+    if (articleInData) {
+      articleInData.statusId = newStatusId;
+    }
+  };
+
+  // Check if article is in finishedReadingItems in localStorage
+  useEffect(() => {
+    const finishedItems = getItems("finishedReadingItems") || [];
+
+    if (finishedItems.includes(article.name)) {
+      setChecked(true);
+      article.statusId = finishedStatusId;
+      updateArticleStatusInDataArray(article.name, finishedStatusId);
+    } else {
+      article.statusId = unfinishedStatusId;
+      updateArticleStatusInDataArray(article.name, unfinishedStatusId);
+    }
+
+    // Initialize favorite state from localStorage
+    const likedItems = getItems("likedItems") || [];
+    if (likedItems.includes(article.name)) {
+      setIsFavoriteState(true);
+      article.isFavorite = true;
+    }
+  }, [article.name, category]);
+
+  // Handle checkbox change
+  const handleChange = () => {
+    const newCheckedState = !checked;
+    setChecked(newCheckedState);
+
+    if (newCheckedState) {
+      // Add to finished items in localStorage
+      addItem("finishedReadingItems", article.name);
+
+      // Update statusId in current article and data array
+      article.statusId = finishedStatusId;
+      updateArticleStatusInDataArray(article.name, finishedStatusId);
+    } else {
+      // Remove from finished items in localStorage
+      deleteItem("finishedReadingItems", article.name);
+
+      // Update statusId in current article and data array
+      article.statusId = unfinishedStatusId;
+      updateArticleStatusInDataArray(article.name, unfinishedStatusId);
+    }
+  };
+
+  // Handle favorite toggling
+  const toggleFavorite = () => {
+    setIsFavoriteState(true);
+    addItem("likedItems", article.name);
+    article.isFavorite = true;
+
+    // Update isFavorite in data array
+    const dataArray = getCategoryData(category);
+    const articleInData = dataArray.find((item) => item.name === article.name);
+    if (articleInData) {
+      articleInData.isFavorite = true;
+    }
+  };
+
+  const toggleNotFavorite = () => {
+    setIsFavoriteState(false);
+    deleteItem("likedItems", article.name);
+    article.isFavorite = false;
+
+    // Update isFavorite in data array
+    const dataArray = getCategoryData(category);
+    const articleInData = dataArray.find((item) => item.name === article.name);
+    if (articleInData) {
+      articleInData.isFavorite = false;
     }
   };
 
@@ -72,12 +160,11 @@ function ArticleDetail({
             <span className={styles.subtitle}>{article.source.name}</span>
             <span className={styles.title}>{article.name}</span>
             <span className={styles.description}>{article.description}</span>
-            
           </div>
           <button className={styles.exploreButton}>Explore More →</button>
           <div className={`${styles.cardtoggles} flex-row`}>
             <div className={`${styles.checkboxStyling} flex-row`}>
-              <Checkbox />
+              <Checkbox checked={checked} onClick={handleChange} />
               <span className={styles.label}>Finished Reading</span>{" "}
             </div>
             <div className={`${styles.heartStyling} flex-row`}>
@@ -89,7 +176,7 @@ function ArticleDetail({
               ) : (
                 <Heart
                   className={styles.heartButton}
-                  onClick={toggleFavorite}
+                  onClick={toggleNotFavorite}
                 />
               )}
               <span className={styles.label}>Like</span>{" "}
@@ -99,7 +186,6 @@ function ArticleDetail({
       </div>
 
       {/* From Creators Section */}
-
       <h1 className={`${styles.fromcreatortitle}`}>From Creator</h1>
       <div className={`${styles.fromCreatorsSection} `}>
         <div className={`${styles.relatedArticles} flex-row`}>

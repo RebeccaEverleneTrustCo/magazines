@@ -1,4 +1,3 @@
-
 "use client";
 
 import parentMascot from "@/public/parents_mascot.svg";
@@ -30,4 +29,3 @@ export default Parents;
 
 //local storage hook
 //
-

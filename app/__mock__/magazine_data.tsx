@@ -1,4 +1,3 @@
-
 import { StaticImageData } from "next/image";
 import cp from "@/public/cp.png";
 import barnesAndNoble from "@/public/barnes_noble.png";
