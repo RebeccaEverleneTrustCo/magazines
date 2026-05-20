@@ -20,100 +20,106 @@ function SideNav({
       {/* STATUS */}
       <span className={styles.filterTypeTitle}>Status</span>
 
-      {state.statusList.map((status: IFilter) => (
-        <CheckBox
-          key={status.id}
-          label={status.name}
-          group="status"
-          checked={status.id === state.selectedStatus?.id}
-          onClick={() => {
-            const updatedStatus =
-              state.selectedStatus?.id === status.id
-                ? null
-                : status;
+      {state.statusList.map((status: IFilter) => {
+        return (
+          <CheckBox
+            key={status.id}
+            label={status.name}
+            group="status"
+            checked={status.id === state.selectedStatus?.id}
+            onClick={() => {
+              const updatedStatus =
+                state.selectedStatus?.id === status.id
+                  ? null
+                  : status;
 
-            dispatch({
-              type: ActionType.SetSelectedStatus,
-              payload: {
-                ...state,
-                selectedStatus: updatedStatus,
-              },
-            });
+              dispatch({
+                type: ActionType.SetSelectedStatus,
+                payload: {
+                  ...state,
+                  selectedStatus: updatedStatus,
+                },
+              });
 
-            dispatch({
-              type: ActionType.SetFilteredArticles,
-              payload: {
-                ...state,
-                selectedStatus: updatedStatus,
-              },
-            });
-          }}
-        />
-      ))}
+              dispatch({
+                type: ActionType.SetFilteredArticles,
+                payload: {
+                  ...state,
+                  selectedStatus: updatedStatus,
+                },
+              });
+            }}
+          />
+        );
+      })}
 
       {/* SOURCES */}
       <span className={styles.filterTypeTitle}>Sources</span>
 
-      {state.sourceList.map((source: IFilter) => (
-        <CheckBox
-          key={source.id}
-          label={source.name}
-          group="sources"
-          checked={source.id in state.selectedSourceIds}
-          onClick={() => {
-            const sourceIds: IFilterHash = {
-              ...state.selectedSourceIds,
-            };
+      {state.sourceList.map((source: IFilter) => {
+        return (
+          <CheckBox
+            key={source.id}
+            label={source.name}
+            group="sources"
+            checked={source.id in state.selectedSourceIds}
+            onClick={() => {
+              const sourceIds: IFilterHash = {
+                ...state.selectedSourceIds,
+              };
 
-            if (source.id in state.selectedSourceIds) {
-              delete sourceIds[source.id];
-            } else {
-              sourceIds[source.id] = "";
-            }
+              if (source.id in state.selectedSourceIds) {
+                delete sourceIds[source.id];
+              } else {
+                sourceIds[source.id] = "";
+              }
 
-            dispatch({
-              type: ActionType.SetSelectedSources,
-              payload: {
-                ...state,
-                selectedSourceIds: sourceIds,
-              },
-            });
-          }}
-        />
-      ))}
+              dispatch({
+                type: ActionType.SetSelectedSources,
+                payload: {
+                  ...state,
+                  selectedSourceIds: sourceIds,
+                },
+              });
+            }}
+          />
+        );
+      })}
 
       {/* AGE RANGE */}
       {state.ageRangeList && state.ageRangeList.length > 0 && (
         <>
           <span className={styles.filterTypeTitle}>Age Range</span>
 
-          {state.ageRangeList.map((ageRange: IFilter) => (
-            <CheckBox
-              key={ageRange.id}
-              label={ageRange.name}
-              group="age_range"
-              checked={ageRange.id in state.selectedAgeRangeIds}
-              onClick={() => {
-                const ageRangeIds: IFilterHash = {
-                  ...state.selectedAgeRangeIds,
-                };
+          {state.ageRangeList.map((ageRange: IFilter) => {
+            return (
+              <CheckBox
+                key={ageRange.id}
+                label={ageRange.name}
+                group="age_range"
+                checked={ageRange.id in state.selectedAgeRangeIds}
+                onClick={() => {
+                  const ageRangeIds: IFilterHash = {
+                    ...state.selectedAgeRangeIds,
+                  };
 
-                if (ageRange.id in state.selectedAgeRangeIds) {
-                  delete ageRangeIds[ageRange.id];
-                } else {
-                  ageRangeIds[ageRange.id] = "";
-                }
+                  if (ageRange.id in state.selectedAgeRangeIds) {
+                    delete ageRangeIds[ageRange.id];
+                  } else {
+                    ageRangeIds[ageRange.id] = "";
+                  }
 
-                dispatch({
-                  type: ActionType.SetSelectedAgeRange,
-                  payload: {
-                    ...state,
-                    selectedAgeRangeIds: ageRangeIds,
-                  },
-                });
-              }}
-            />
-          ))}
+                  dispatch({
+                    type: ActionType.SetSelectedAgeRange,
+                    payload: {
+                      ...state,
+                      selectedAgeRangeIds: ageRangeIds,
+                    },
+                  });
+                }}
+              />
+            );
+          })}
         </>
       )}
 
