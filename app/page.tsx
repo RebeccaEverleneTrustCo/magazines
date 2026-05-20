@@ -126,7 +126,7 @@ export default function Home() {
             alt="High School Mascot"
             className={styles.ageRangeMascot}
           />
-          <AnimatedCard src={highSchoolImgs} text="High School" href=""/>
+          <AnimatedCard src={highSchoolImgs} text="High School" href="high-school"/>
         </div>
 
         <div className={styles.parentsGradient}>

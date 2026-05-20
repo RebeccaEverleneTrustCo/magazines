@@ -11,6 +11,8 @@ export const API_URLS = {
         return '/youngKidsData.json';
       case 'middleschool':
         return '/middleSchoolData.json';
+      case 'highschool':
+        return '/highSchoolData.json';
       case 'parents':
         return '/parentsData.json';
       default:

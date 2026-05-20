@@ -175,6 +175,8 @@ import { middleSchoolArticleData } from "@/app/middle-school/api/getArticleforMi
 import { parentsArticleData } from "@/app/parents/api/getArticleData";
 import { Checkbox } from "@mui/material";
 import { addItem, getItems, deleteItem } from "@/app/store/localStorageHelper";
+import { highSchoolArticleData } from "@/app/high-school/api/getArticleforHighSchool";
+
 
 function ArticleDetail({
   article,
@@ -198,6 +200,8 @@ function ArticleDetail({
         return youngKidsArticleData;
       case "middleschool":
         return middleSchoolArticleData;
+      case "highschool":
+        return highSchoolArticleData;
       case "parents":
         return parentsArticleData;
       default:
