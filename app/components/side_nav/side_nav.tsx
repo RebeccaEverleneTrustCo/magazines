@@ -1,5 +1,5 @@
 import styles from "./side_nav.module.css";
-import { IFilter } from "../../__mock__/filter_data";
+import { IFilter } from "@/app/young-kids/api/filter_data_youngkids";
 import CheckBox from "../checkbox";
 import removeIcon from "@/public/remove_icon.svg";
 import Image from "next/image";
@@ -87,41 +87,57 @@ function SideNav({
       })}
 
       {/* AGE RANGE */}
-      {state.ageRangeList && state.ageRangeList.length > 0 && (
-        <>
-          <span className={styles.filterTypeTitle}>Age Range</span>
+      {state.ageRangeList &&
+        state.ageRangeList.length > 0 && (
+          <>
+            <span className={styles.filterTypeTitle}>
+              Age Range
+            </span>
 
-          {state.ageRangeList.map((ageRange: IFilter) => {
-            return (
-              <CheckBox
-                key={ageRange.id}
-                label={ageRange.name}
-                group="age_range"
-                checked={ageRange.id in state.selectedAgeRangeIds}
-                onClick={() => {
-                  const ageRangeIds: IFilterHash = {
-                    ...state.selectedAgeRangeIds,
-                  };
+            {state.ageRangeList.map(
+              (ageRange: IFilter) => {
+                return (
+                  <CheckBox
+                    key={ageRange.id}
+                    label={ageRange.name}
+                    group="age_range"
+                    checked={
+                      ageRange.id in
+                      state.selectedAgeRangeIds
+                    }
+                    onClick={() => {
+                      const ageRangeIds: IFilterHash =
+                        {
+                          ...state.selectedAgeRangeIds,
+                        };
 
-                  if (ageRange.id in state.selectedAgeRangeIds) {
-                    delete ageRangeIds[ageRange.id];
-                  } else {
-                    ageRangeIds[ageRange.id] = "";
-                  }
+                      if (
+                        ageRange.id in
+                        state.selectedAgeRangeIds
+                      ) {
+                        delete ageRangeIds[
+                          ageRange.id
+                        ];
+                      } else {
+                        ageRangeIds[ageRange.id] =
+                          "";
+                      }
 
-                  dispatch({
-                    type: ActionType.SetSelectedAgeRange,
-                    payload: {
-                      ...state,
-                      selectedAgeRangeIds: ageRangeIds,
-                    },
-                  });
-                }}
-              />
-            );
-          })}
-        </>
-      )}
+                      dispatch({
+                        type: ActionType.SetSelectedAgeRange,
+                        payload: {
+                          ...state,
+                          selectedAgeRangeIds:
+                            ageRangeIds,
+                        },
+                      });
+                    }}
+                  />
+                );
+              }
+            )}
+          </>
+        )}
 
       {/* BUTTONS */}
       <div className={`flex-row ${styles.buttonWrapper}`}>

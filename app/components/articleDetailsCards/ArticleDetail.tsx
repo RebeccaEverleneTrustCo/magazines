@@ -1,172 +1,9 @@
-// "use client";
-
-// import React, { useState } from "react";
-// import backIcon from "@/public/back.svg";
-// import { useRouter } from "next/navigation";
-// import styles from "./articleDetailsCards.module.css"; // Adjust path if needed
-// import { IArticle } from "../../__mock__/articleDataFormat.ts";
-// import Image from "next/image";
-// import { youngKidsArticleData } from "../../young-kids/api/getArticleforYoungkids";
-// import { Heart, HeartOutlined } from "../heart";
-// import { middleSchoolArticleData } from "@/app/middle-school/api/getArticleforMiddleSchool";
-// import { parentsArticleData } from "@/app/parents/api/getArticleData";
-// import { Checkbox } from "@mui/material";
-// import { addItem, getItems, deleteItem } from "@/app/store/localStorageHelper";
-
-// function ArticleDetail({
-//   article,
-//   category,
-// }: {
-//   article: IArticle;
-//   category: string;
-// }) {
-//   const [checked, setChecked] = useState(false);
-
-//   React.useEffect(() => {
-//     const finishedItems = getItems("finishedReadingItems") || [];
-
-//     if (finishedItems.includes(article.name)) {
-//       setChecked(true);
-//     }
-//   }, [article.name]);
-
-//   const handleChange = () => {
-//     const newCheckedState = !checked;
-//     setChecked(newCheckedState);
-//     if (newCheckedState) {
-//       const newItem = article.name;
-//       addItem("finishedReadingItems", newItem);
-//       article.statusId = "Karlh7QHaQrS7G3c";
-//     } else {
-//       deleteItem("finishedReadingItems", article.name);
-//       article.statusId = "rNtJ7GnFBy4jgyUC";
-//     }
-//   };
-//   const [isFavoriteState, setIsFavoriteState] = useState(article.isFavorite);
-//   const router = useRouter();
-//   const toggleFavorite = () => {
-//     setIsFavoriteState(!isFavoriteState);
-//     const newItem = article.name;
-//     addItem("likedItems", newItem);
-//   };
-//   const toggleNotFavorite = () => {
-//     setIsFavoriteState(!isFavoriteState);
-//     deleteItem("likedItems", article.name);
-//   };
-
-//   // Function to get the article data based on category
-//   const getCategoryData = (category: string) => {
-//     switch (category) {
-//       case "youngkids":
-//         return youngKidsArticleData;
-//       case "middleschool":
-//         return middleSchoolArticleData;
-//       case "parents":
-//         return parentsArticleData;
-//       default:
-//         return [];
-//     }
-//   };
-
-//   const currentArticleDetail = getCategoryData(category).find(
-//     (a) => a.name === article.name
-//   );
-
-//   // Fetch all articles from the same source (excluding the current one)
-//   const relatedArticles = getCategoryData(category).filter(
-//     (a) => a.source.name === article.source.name && a.name !== article.name
-//   );
-
-//   return (
-//     <div className="article-container">
-//       {/* Header */}
-//       <div className={styles.header}>
-//         <button className={styles.buttn} onClick={() => router.back()}>
-//           <Image className={styles.backButton} src={backIcon} alt="Back Icon" />
-//         </button>
-//         <span className={styles.headerTitle}>Articles</span>
-//       </div>
-
-//       {/* Article Details */}
-//       <div className={`${styles.card} flex-row`}>
-//         <div className={`image ${styles.cardImg}`}>
-//           <Image
-//             src={currentArticleDetail?.img}
-//             fill={true}
-//             alt={article.name}
-//           />
-//         </div>
-//         <div className={`${styles.cardContent} flex-column`}>
-//           <div className={`${styles.carddetails} flex-column`}>
-//             <span className={styles.subtitle}>{article.source.name}</span>
-//             <span className={styles.title}>{article.name}</span>
-//             <span className={styles.description}>{article.description}</span>
-//           </div>
-//           <button className={styles.exploreButton}>Explore More →</button>
-//           <div className={`${styles.cardtoggles} flex-row`}>
-//             <div className={`${styles.checkboxStyling} flex-row`}>
-//               <Checkbox checked={checked} onClick={handleChange} />
-//               <span className={styles.label}>Finished Reading</span>{" "}
-//             </div>
-//             <div className={`${styles.heartStyling} flex-row`}>
-//               {!isFavoriteState ? (
-//                 <HeartOutlined
-//                   className={styles.heartButton}
-//                   onClick={toggleFavorite}
-//                 />
-//               ) : (
-//                 <Heart
-//                   className={styles.heartButton}
-//                   onClick={toggleNotFavorite}
-//                 />
-//               )}
-//               <span className={styles.label}>Like</span>{" "}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* From Creators Section */}
-
-//       <h1 className={`${styles.fromcreatortitle}`}>From Creator</h1>
-//       <div className={`${styles.fromCreatorsSection} `}>
-//         <div className={`${styles.relatedArticles} flex-row`}>
-//           {relatedArticles?.length > 0 ? (
-//             relatedArticles.map((relatedArticle) => (
-//               <div
-//                 key={relatedArticle.name}
-//                 className={styles.relatedArticleCard}
-//               >
-//                 <div className={`${styles.relatedArticleImage}`}>
-//                   <Image
-//                     src={relatedArticle.img}
-//                     alt={relatedArticle.name}
-//                     width={260}
-//                     height={240}
-//                     className={styles.ArticleImage}
-//                   />
-//                 </div>
-//                 <span className={styles.relatedArticleTitle}>
-//                   {relatedArticle.name}
-//                 </span>
-//               </div>
-//             ))
-//           ) : (
-//             <p>No related articles available.</p>
-//           )}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default ArticleDetail;
 "use client";
 
 import React, { useState, useEffect } from "react";
 import backIcon from "@/public/back.svg";
 import { useRouter } from "next/navigation";
-import styles from "./articleDetailsCards.module.css"; // Adjust path if needed
+import styles from "./articleDetailsCards.module.css";
 import { IArticle } from "../../__mock__/articleDataFormat.ts";
 import Image from "next/image";
 import { youngKidsArticleData } from "../../young-kids/api/getArticleforYoungkids";
@@ -174,114 +11,161 @@ import { Heart, HeartOutlined } from "../heart";
 import { middleSchoolArticleData } from "@/app/middle-school/api/getArticleforMiddleSchool";
 import { parentsArticleData } from "@/app/parents/api/getArticleData";
 import { Checkbox } from "@mui/material";
-import { addItem, getItems, deleteItem } from "@/app/store/localStorageHelper";
+import {
+  addItem,
+  getItems,
+  deleteItem,
+} from "@/app/store/localStorageHelper";
 
 function ArticleDetail({
   article,
+  src,
+  title,
+  subtitle,
+  isFavorite,
   category,
 }: {
   article: IArticle;
+  src: any;
+  title: string;
+  subtitle: string;
+  isFavorite: boolean;
   category: string;
 }) {
   const [checked, setChecked] = useState(false);
-  const [isFavoriteState, setIsFavoriteState] = useState(article.isFavorite);
+  const [isFavoriteState, setIsFavoriteState] =
+    useState(isFavorite);
+
   const router = useRouter();
 
-  // Define status IDs as constants
+  // Define status IDs
   const finishedStatusId = "Karlh7QHaQrS7G3c";
   const unfinishedStatusId = "rNtJ7GnFBy4jgyUC";
 
-  // Helper function to get the correct data array based on category
+  // Helper function to get category data
   const getCategoryData = (category: string) => {
     switch (category) {
       case "youngkids":
         return youngKidsArticleData;
+
       case "middleschool":
         return middleSchoolArticleData;
+
       case "parents":
         return parentsArticleData;
+
       default:
         return [];
     }
   };
 
-  // Helper function to update article status in data array
+  // Update article status in dataset
   const updateArticleStatusInDataArray = (
     articleName: string,
     newStatusId: string
   ) => {
     const dataArray = getCategoryData(category);
-    const articleInData = dataArray.find((item) => item.name === articleName);
+
+    const articleInData = dataArray.find(
+      (item) => item.name === articleName
+    );
+
     if (articleInData) {
       articleInData.statusId = newStatusId;
     }
   };
 
-  // Check if article is in finishedReadingItems in localStorage
+  // Initialize state from localStorage
   useEffect(() => {
-    const finishedItems = getItems("finishedReadingItems") || [];
+    const finishedItems =
+      getItems("finishedReadingItems") || [];
 
     if (finishedItems.includes(article.name)) {
       setChecked(true);
+
       article.statusId = finishedStatusId;
-      updateArticleStatusInDataArray(article.name, finishedStatusId);
+
+      updateArticleStatusInDataArray(
+        article.name,
+        finishedStatusId
+      );
     } else {
       article.statusId = unfinishedStatusId;
-      updateArticleStatusInDataArray(article.name, unfinishedStatusId);
+
+      updateArticleStatusInDataArray(
+        article.name,
+        unfinishedStatusId
+      );
     }
 
-    // Initialize favorite state from localStorage
     const likedItems = getItems("likedItems") || [];
+
     if (likedItems.includes(article.name)) {
       setIsFavoriteState(true);
       article.isFavorite = true;
     }
   }, [article.name, category]);
 
-  // Handle checkbox change
+  // Handle checkbox toggle
   const handleChange = () => {
     const newCheckedState = !checked;
+
     setChecked(newCheckedState);
 
     if (newCheckedState) {
-      // Add to finished items in localStorage
       addItem("finishedReadingItems", article.name);
 
-      // Update statusId in current article and data array
       article.statusId = finishedStatusId;
-      updateArticleStatusInDataArray(article.name, finishedStatusId);
+
+      updateArticleStatusInDataArray(
+        article.name,
+        finishedStatusId
+      );
     } else {
-      // Remove from finished items in localStorage
       deleteItem("finishedReadingItems", article.name);
 
-      // Update statusId in current article and data array
       article.statusId = unfinishedStatusId;
-      updateArticleStatusInDataArray(article.name, unfinishedStatusId);
+
+      updateArticleStatusInDataArray(
+        article.name,
+        unfinishedStatusId
+      );
     }
   };
 
-  // Handle favorite toggling
+  // Favorite toggle
   const toggleFavorite = () => {
     setIsFavoriteState(true);
+
     addItem("likedItems", article.name);
+
     article.isFavorite = true;
 
-    // Update isFavorite in data array
     const dataArray = getCategoryData(category);
-    const articleInData = dataArray.find((item) => item.name === article.name);
+
+    const articleInData = dataArray.find(
+      (item) => item.name === article.name
+    );
+
     if (articleInData) {
       articleInData.isFavorite = true;
     }
   };
 
+  // Remove favorite
   const toggleNotFavorite = () => {
     setIsFavoriteState(false);
+
     deleteItem("likedItems", article.name);
+
     article.isFavorite = false;
 
-    // Update isFavorite in data array
     const dataArray = getCategoryData(category);
-    const articleInData = dataArray.find((item) => item.name === article.name);
+
+    const articleInData = dataArray.find(
+      (item) => item.name === article.name
+    );
+
     if (articleInData) {
       articleInData.isFavorite = false;
     }
@@ -291,42 +175,76 @@ function ArticleDetail({
     (a) => a.name === article.name
   );
 
-  // Fetch all articles from the same source (excluding the current one)
+  // Related articles
   const relatedArticles = getCategoryData(category).filter(
-    (a) => a.source.name === article.source.name && a.name !== article.name
+    (a) =>
+      a.source.name === article.source.name &&
+      a.name !== article.name
   );
 
   return (
     <div className="article-container">
-      {/* Header */}
+      {/* HEADER */}
       <div className={styles.header}>
-        <button className={styles.buttn} onClick={() => router.back()}>
-          <Image className={styles.backButton} src={backIcon} alt="Back Icon" />
+        <button
+          className={styles.buttn}
+          onClick={() => router.back()}
+        >
+          <Image
+            className={styles.backButton}
+            src={backIcon}
+            alt="Back Icon"
+          />
         </button>
-        <span className={styles.headerTitle}>Articles</span>
+
+        <span className={styles.headerTitle}>
+          Articles
+        </span>
       </div>
 
-      {/* Article Details */}
+      {/* ARTICLE DETAILS */}
       <div className={`${styles.card} flex-row`}>
         <div className={`image ${styles.cardImg}`}>
           <Image
-            src={currentArticleDetail?.img}
+            src={src || currentArticleDetail?.img}
             fill={true}
-            alt={article.name}
+            alt={title}
           />
         </div>
+
         <div className={`${styles.cardContent} flex-column`}>
           <div className={`${styles.carddetails} flex-column`}>
-            <span className={styles.subtitle}>{article.source.name}</span>
-            <span className={styles.title}>{article.name}</span>
-            <span className={styles.description}>{article.description}</span>
+            <span className={styles.subtitle}>
+              {subtitle}
+            </span>
+
+            <span className={styles.title}>
+              {title}
+            </span>
+
+            <span className={styles.description}>
+              {article.description}
+            </span>
           </div>
-          <button className={styles.exploreButton}>Explore More →</button>
+
+          <button className={styles.exploreButton}>
+            Explore More →
+          </button>
+
           <div className={`${styles.cardtoggles} flex-row`}>
+            {/* CHECKBOX */}
             <div className={`${styles.checkboxStyling} flex-row`}>
-              <Checkbox checked={checked} onClick={handleChange} />
-              <span className={styles.label}>Finished Reading</span>{" "}
+              <Checkbox
+                checked={checked}
+                onClick={handleChange}
+              />
+
+              <span className={styles.label}>
+                Finished Reading
+              </span>
             </div>
+
+            {/* HEART */}
             <div className={`${styles.heartStyling} flex-row`}>
               {!isFavoriteState ? (
                 <HeartOutlined
@@ -339,15 +257,21 @@ function ArticleDetail({
                   onClick={toggleNotFavorite}
                 />
               )}
-              <span className={styles.label}>Like</span>{" "}
+
+              <span className={styles.label}>
+                Like
+              </span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* From Creators Section */}
-      <h1 className={`${styles.fromcreatortitle}`}>From Creator</h1>
-      <div className={`${styles.fromCreatorsSection} `}>
+      {/* FROM CREATOR */}
+      <h1 className={styles.fromcreatortitle}>
+        From Creator
+      </h1>
+
+      <div className={styles.fromCreatorsSection}>
         <div className={`${styles.relatedArticles} flex-row`}>
           {relatedArticles?.length > 0 ? (
             relatedArticles.map((relatedArticle) => (
@@ -355,7 +279,7 @@ function ArticleDetail({
                 key={relatedArticle.name}
                 className={styles.relatedArticleCard}
               >
-                <div className={`${styles.relatedArticleImage}`}>
+                <div className={styles.relatedArticleImage}>
                   <Image
                     src={relatedArticle.img}
                     alt={relatedArticle.name}
@@ -364,6 +288,7 @@ function ArticleDetail({
                     className={styles.ArticleImage}
                   />
                 </div>
+
                 <span className={styles.relatedArticleTitle}>
                   {relatedArticle.name}
                 </span>
