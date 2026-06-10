@@ -1,29 +1,71 @@
-import { ICollectionState, IAction } from "@/app/store/stateTypes"; 
+import { ICollectionState, IAction } from "@/app/store/stateTypes";
 import { ActionType } from "@/app/store/actionTypes";
-
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 
-
 function filterArticles(state: ICollectionState): IArticle[] {
-  const sourceIds = Object.keys(state.selectedSourceIds);
+  const selectedSourceIds = Object.keys(
+    state.selectedSourceIds
+  );
 
-  return state.articleList.filter((article: IArticle) => {
-    return sourceIds.length === 0 || sourceIds.includes(article.source.id);
-  });
+  const selectedAgeRangeIds = Object.keys(
+    state.selectedAgeRangeIds
+  );
+
+  const selectedStatusId =
+    state.selectedStatus?.id;
+
+  return state.articleList.filter(
+    (article: IArticle) => {
+      const matchesSource =
+        selectedSourceIds.length === 0 ||
+        selectedSourceIds.includes(
+          article.source.id
+        );
+
+      const matchesAgeRange =
+        selectedAgeRangeIds.length === 0 ||
+        (article.ageRangeId != null &&
+          selectedAgeRangeIds.includes(
+            article.ageRangeId
+          ));
+
+      const matchesStatus =
+        !selectedStatusId ||
+        article.statusId === selectedStatusId;
+
+      return (
+        matchesSource &&
+        matchesAgeRange &&
+        matchesStatus
+      );
+    }
+  );
 }
 
-function searchArticles(state: ICollectionState): IArticle[] {
-  const searchText = state.searchText ? state.searchText : "";
+function searchArticles(
+  state: ICollectionState
+): IArticle[] {
+  const searchText = state.searchText
+    ? state.searchText
+    : "";
 
-  return state.articleList.filter((article: IArticle) => {
-    return (
-      searchText.length === 0 ||
-      article.name.toLowerCase().includes(searchText.toLowerCase())
-    );
-  });
+  return state.articleList.filter(
+    (article: IArticle) => {
+      return (
+        searchText.length === 0 ||
+        article.name
+          .toLowerCase()
+          .includes(
+            searchText.toLowerCase()
+          )
+      );
+    }
+  );
 }
 
-function fetchArticles(state: ICollectionState): IArticle[] {
+function fetchArticles(
+  state: ICollectionState
+): IArticle[] {
   return state.articleList;
 }
 
@@ -35,83 +77,121 @@ export function reducer(
     case ActionType.AddFilterData:
       return {
         ...state,
-        statusList: [...action.payload.statusList],
-        sourceList: [...action.payload.sourceList],
+        statusList: [
+          ...action.payload.statusList,
+        ],
+        sourceList: [
+          ...action.payload.sourceList,
+        ],
         loadingFilters: false,
       };
+
     case ActionType.SetSelectedStatus:
       return {
         ...state,
-        selectedStatus: action.payload.selectedStatus,
+        selectedStatus:
+          action.payload.selectedStatus,
       };
+
     case ActionType.SetSelectedSources:
       return {
         ...state,
-        selectedSourceIds: { ...action.payload.selectedSourceIds },
+        selectedSourceIds: {
+          ...action.payload
+            .selectedSourceIds,
+        },
       };
+
+    case ActionType.SetSelectedAgeRange:
+      return {
+        ...state,
+        selectedAgeRangeIds: {
+          ...action.payload
+            .selectedAgeRangeIds,
+        },
+      };
+
     case ActionType.AddArticleList:
       return {
         ...state,
-        articleList: [...action.payload.articleList],
-        filteredArticleList: [...action.payload.articleList],
+        articleList: [
+          ...action.payload.articleList,
+        ],
+        filteredArticleList: [
+          ...action.payload.articleList,
+        ],
         loadingArticles: false,
       };
+
     case ActionType.SetFilteredArticles:
       return {
         ...state,
-        filteredArticleList: filterArticles({
-          ...state,
-          articleList: action.payload.articleList,
-        }),
+        filteredArticleList:
+          filterArticles({
+            ...state,
+            ...action.payload,
+          }),
         loadingArticles: false,
       };
+
     case ActionType.AddAllData:
       return {
         ...state,
-        statusList: [...action.payload.statusList],
-        sourceList: [...action.payload.sourceList],
+        statusList: [
+          ...action.payload.statusList,
+        ],
+        sourceList: [
+          ...action.payload.sourceList,
+        ],
         loadingFilters: false,
-        articleList: [...action.payload.articleList],
-        filteredArticleList: [...action.payload.articleList],
-        ageRangeList: [...action.payload.ageRangeList],
+        articleList: [
+          ...action.payload.articleList,
+        ],
+        filteredArticleList: [
+          ...action.payload.articleList,
+        ],
+        ageRangeList: [
+          ...action.payload.ageRangeList,
+        ],
         loadingArticles: false,
       };
+
     case ActionType.ClearFilters:
       return {
         ...state,
         selectedSourceIds: {},
-        statusList: [...action.payload.statusList],
-        sourceList: [...action.payload.sourceList],
-        loadingFilters: false,
-        articleList: [...action.payload.articleList],
-        filteredArticleList: [...action.payload.articleList],
-        loadingArticles: false,
+        selectedAgeRangeIds: {},
+        selectedStatus: null,
+        filteredArticleList: [
+          ...state.articleList,
+        ],
       };
+
     case ActionType.SetSearchText: {
-      if (action.payload.searchText?.length === 0) {
+      if (!action.payload.searchText) {
         return {
           ...state,
-          filteredArticleList: fetchArticles({
-            ...state,
-            articleList: action.payload.articleList,
-          }),
-          loadingArticles: false,
-        };
-      } else {
-        return {
-          ...state,
-          searchText: action.payload.searchText,
-          filteredArticleList: searchArticles({
-            ...state,
-            articleList: action.payload.articleList,
-          }),
-          loadingArticles: false,
+          filteredArticleList:
+            fetchArticles(state),
         };
       }
+
+      return {
+        ...state,
+        searchText:
+          action.payload.searchText,
+        filteredArticleList:
+          searchArticles({
+            ...state,
+            articleList:
+              state.articleList,
+          }),
+      };
     }
-    default: {
-      throw new Error("Action not recognized");
-    }
+
+    default:
+      return state;
   }
 }
+
 export default reducer;

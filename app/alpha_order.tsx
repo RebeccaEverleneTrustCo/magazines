@@ -1,4 +1,5 @@
 "use client";
+
 import styles from "./page.module.css";
 import AlphaOrderChip from "./components/alpha_order_chip/alpha_order_chip";
 import React from "react";
@@ -7,7 +8,9 @@ import { magazineData, IMagazine } from "./__mock__/magazine_data";
 
 function filterAndDisplayList(alphaIndex: number) {
   const filteredData = magazineData.filter((magazine: IMagazine) =>
-    magazine.name.toUpperCase().startsWith(String.fromCharCode(65 + alphaIndex))
+    magazine.name
+      .toUpperCase()
+      .startsWith(String.fromCharCode(65 + alphaIndex))
   );
 
   if (filteredData.length === 0) {
@@ -18,33 +21,40 @@ function filterAndDisplayList(alphaIndex: number) {
     );
   }
 
-  return filteredData.map((magazine: IMagazine) => (
-    <AlphaOrderCard
-      src={magazine.src}
-      title={magazine.title}
-      body={magazine.body}
-      ageRange={magazine.ageRange}
-    />
-  ));
+  return filteredData.map((magazine: IMagazine, index) => {
+    return (
+      <AlphaOrderCard
+        key={magazine.title || index}
+        src={magazine.src}
+        title={magazine.title}
+        body={magazine.body}
+        ageRange={magazine.ageRange}
+      />
+    );
+  });
 }
 
 function AlphaOrder() {
   const [alphaIndex, setAlphaIndex] = React.useState(2);
+
   return (
     <>
       <div className={`flex-row ${styles.alphaOrderRow}`}>
-        {Array.from(Array(26).keys()).map((key) => (
-          <AlphaOrderChip
-            text={String.fromCharCode(65 + key)}
-            selected={alphaIndex === key}
-            onClick={() => {
-              setAlphaIndex(key);
-            }}
-          />
-        ))}
+        {Array.from(Array(26).keys()).map((key) => {
+          return (
+            <AlphaOrderChip
+              key={key}
+              text={String.fromCharCode(65 + key)}
+              selected={alphaIndex === key}
+              onClick={() => {
+                setAlphaIndex(key);
+              }}
+            />
+          );
+        })}
       </div>
 
-      <div className={` flex-row ${styles.magazineRow}`}>
+      <div className={`flex-row ${styles.magazineRow}`}>
         {filterAndDisplayList(alphaIndex)}
       </div>
     </>

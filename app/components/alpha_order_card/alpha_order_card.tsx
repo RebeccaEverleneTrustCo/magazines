@@ -1,7 +1,7 @@
+"use client";
 
 import styles from "./alpha_order_card.module.css";
 import Image, { StaticImageData } from "next/image";
-import cp from "@/public/cp.png";
 import { useRouter } from "next/navigation";
 
 interface numStringHash {
@@ -22,7 +22,7 @@ const ageRangeToStyle: numStringHash = {
   3: styles.parentsGradient,
 };
 
-export const AlphaOrderCard =({
+export const AlphaOrderCard = ({
   src,
   title,
   body,
@@ -40,7 +40,9 @@ export const AlphaOrderCard =({
       <div className={`${styles.alphaOrderImgSection} flex-column`}>
         <Image src={src} alt="Alpha Order" />
       </div>
+
       <span className={styles.title}>{title}</span>
+
       <span className={styles.body}>{body}</span>
 
       <button
@@ -49,10 +51,8 @@ export const AlphaOrderCard =({
           router.push(`/${ageRangeToRoute[ageRange]}`);
         }}
       >
-        Let's learn more &#10141;
+        Let&apos;s learn more &#10141;
       </button>
     </div>
   );
-}
-
-
+};

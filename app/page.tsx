@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import styles from "./page.module.css";
 import magnifyingGlass from "@/public/magnifying_glass.svg";
@@ -151,4 +150,3 @@ export default function Home() {
     </main>
   );
 }
-
