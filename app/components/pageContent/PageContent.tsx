@@ -38,11 +38,13 @@ const PageContent: React.FC<PageContentProps> = ({
     });
   });
 
-
   return (
     <div className={`flex-column ${styles.main}`}>
+
       <CollectionHeader src={mascot} headerTitle={headerTitle} />
+
       <div className={`${styles.body}`}>
+
         <HeaderBar
           state={state}
           dispatch={dispatch}
@@ -54,15 +56,37 @@ const PageContent: React.FC<PageContentProps> = ({
             Loading
           </span>
         ) : (
+
           <div className={`flex-row align-start`}>
+
             <SideNav state={state} dispatch={dispatch} />
+
             <div className={`${styles.content} flex-column`}>
-              <ContentFilter />
+
+              <ContentFilter state={state} dispatch={dispatch} />
+
               <div className={`flex-row justify-start ${styles.magazineList}`}>
+
                 {state.loadingArticles ? (
+
                   <span>Loading</span>
+
+                ) : filterFilteredArticleList.length === 0 ? (
+
+                  <div
+                    style={{
+                      padding: "40px",
+                      fontSize: "18px",
+                      color: "#666",
+                    }}
+                  >
+                    ❤️ No liked articles yet
+                  </div>
+
                 ) : (
+
                   filterFilteredArticleList.map((article: IArticle) => (
+
                     <ArticleCard
                       key={`${article.name}-${article.source.id}`}
                       src={article.img}
@@ -71,13 +95,21 @@ const PageContent: React.FC<PageContentProps> = ({
                       isFavorite={article.isFavorite ?? false}
                       category={category}
                     />
+
                   ))
+
                 )}
+
               </div>
+
             </div>
+
           </div>
+
         )}
+
       </div>
+
     </div>
   );
 };
