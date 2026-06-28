@@ -9,6 +9,7 @@ import Image from "next/image";
 import { youngKidsArticleData } from "../../young-kids/api/getArticleforYoungkids";
 import { Heart, HeartOutlined } from "../heart";
 import { middleSchoolArticleData } from "@/app/middle-school/api/getArticleforMiddleSchool";
+import { highSchoolArticleData } from "@/app/high-school/api/getArticleforHighSchool";
 import { parentsArticleData } from "@/app/parents/api/getArticleData";
 import { Checkbox } from "@mui/material";
 import {
@@ -50,8 +51,6 @@ function ArticleDetail({
 
       case "middleschool":
         return middleSchoolArticleData;
-      case "highschool":
-        return highSchoolArticleData;
       case "parents":
         return parentsArticleData;
 
