@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+
 import canYouGetVaccinatedWithoutANeedle from "@/public/can_you_get_vaccinated_without_a_needle.png";
 import howCanWeHelpStopTheCovid19Pandemic from "@/public/how_can_we_help_stop_the_covid19_pandemic.png";
 import canHivDrugsHelpCovid19Patients from "@/public/can_hiv_drugs_help_covid19_patients.png";
@@ -10,41 +11,28 @@ import moreAggressiveTreatmentForFemaleBabiesWithCdh from "@/public/more_aggress
 import newFundingToFightChildhoodCancer from "@/public/new_funding_to_fight_childhood_cancer.png";
 import expandingCareForChildrenWithInflammatoryBowel from "@/public/expanding_care_for_children_with_inflammatory_bowel.png";
 
-
-
-
+import highSchoolData from "@/public/highSchoolData.json";
 
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
-import { API_URLS } from "@/app/appConstants/apiUrlContants";
 
 const imageMap: { [key: string]: StaticImageData } = {
-    canYouGetVaccinatedWithoutANeedle,
-    howCanWeHelpStopTheCovid19Pandemic,
-    canHivDrugsHelpCovid19Patients,
-    whatIfPeopleUseTooMuchAntibiotics,
-    canWeWriteBiologicalSoftwareUpdatesToCure,
-    howDoesPregnancyChangeMothersBehaviour,
-    brainTumorsInChildren8WarningSignsYouShould,
-    moreAggressiveTreatmentForFemaleBabiesWithCdh,
-    newFundingToFightChildhoodCancer,
-    expandingCareForChildrenWithInflammatoryBowel
+  canYouGetVaccinatedWithoutANeedle,
+  howCanWeHelpStopTheCovid19Pandemic,
+  canHivDrugsHelpCovid19Patients,
+  whatIfPeopleUseTooMuchAntibiotics,
+  canWeWriteBiologicalSoftwareUpdatesToCure,
+  howDoesPregnancyChangeMothersBehaviour,
+  brainTumorsInChildren8WarningSignsYouShould,
+  moreAggressiveTreatmentForFemaleBabiesWithCdh,
+  newFundingToFightChildhoodCancer,
+  expandingCareForChildrenWithInflammatoryBowel,
 };
 
-async function fetchArticleData(category: string): Promise<IArticle[]> {
-    const response = await fetch(API_URLS.GET_CATEGORY_API_URL(category));
-    const data = await response.json();
+export const highSchoolArticleData: IArticle[] = highSchoolData.map(
+  (article: any) => ({
+    ...article,
+    img: imageMap[article.img],
+  })
+);
 
-    return data.map((article: any) => ({
-        ...article,
-        img: imageMap[article.img],
-    }));
-}
-
-let highSchoolArticleData: IArticle[] = [];
-
-fetchArticleData("highschool").then((data) => {
-    highSchoolArticleData = data;
-});
-
-export { highSchoolArticleData };
 export type { IArticle };

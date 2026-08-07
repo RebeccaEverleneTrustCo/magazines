@@ -1,7 +1,7 @@
 "use client";
 import highschoolMascot from "@/public/high_school_mascot.svg";
 import { filterData } from "./api/filter_data_highschool";
-import { highSchoolArticleData } from "./api/getArticleforHighSchool";
+import { highSchoolArticleData } from "./api/getArticleForHighSchool";
 import React from "react";
 import { ActionType } from "../store/actionTypes";
 import { ICollectionState } from "../store/stateTypes";

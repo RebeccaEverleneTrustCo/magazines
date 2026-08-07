@@ -29,7 +29,7 @@ import  howCanSyntheticProteinsHelpPrematureBabies from "@/public/how_can_synthe
 
 
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
-import { API_URLS } from "@/app/appConstants/apiUrlContants";
+import middleSchoolData from "@/public/middleSchoolData.json";
 
 const imageMap: { [key: string]: StaticImageData } = {
     whatHappensIfYouDoNotGetEnoughSleep,
@@ -59,23 +59,10 @@ const imageMap: { [key: string]: StaticImageData } = {
     howCanSyntheticProteinsHelpPrematureBabies
   };
   
-  async function fetchArticleData(category: string): Promise<IArticle[]> {
-    // const response = await fetch(API_URLS.GET_MIDDLESCHOOL_API_URL);
-    const response = await fetch(API_URLS.GET_CATEGORY_API_URL(category));
-    const data = await response.json();
-  
-    return data.map((article: any) => ({
-      ...article,
-      img: imageMap[article.img],
-    }));
-  }
-  
-  let middleSchoolArticleData: IArticle[] = [];
-  
-  fetchArticleData("middleschool").then((data) => {
-    middleSchoolArticleData = data;
-  });
-  
-  export { middleSchoolArticleData };
-  export type { IArticle };
-  
+  export const middleSchoolArticleData: IArticle[] =
+  middleSchoolData.map((article: any) => ({
+    ...article,
+    img: imageMap[article.img],
+  }));
+
+export type { IArticle };
