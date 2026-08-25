@@ -3,7 +3,6 @@ import styles from "./page.module.css";
 import HeaderBar from "@/app/components/header_bar/header_bar";
 import SideNav from "@/app/components/side_nav/side_nav";
 import CollectionHeader from "@/app/components/collection_header/collection_header";
-import ContentFilter from "@/app/components/content_filter/content_filter";
 import ArticleCard from "@/app/components/article_card/article_card";
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import { StaticImageData } from "next/image";
@@ -62,8 +61,6 @@ const PageContent: React.FC<PageContentProps> = ({
             <SideNav state={state} dispatch={dispatch} />
 
             <div className={`${styles.content} flex-column`}>
-
-              <ContentFilter state={state} dispatch={dispatch} />
 
               <div className={`flex-row justify-start ${styles.magazineList}`}>
 

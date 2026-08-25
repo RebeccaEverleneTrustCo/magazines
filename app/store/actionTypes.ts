@@ -10,5 +10,4 @@ export enum ActionType {
   ClearFilters = "CLEAR_FILTERS",
   ToggleFavorite = "TOGGLE_FAVORITE",
   SetSearchText = "SET_SEARCH_TEXT",
-  SetSortType = "SET_SORT_TYPE",
 }
