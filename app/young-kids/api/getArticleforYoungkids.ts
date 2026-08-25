@@ -30,7 +30,7 @@ import feelingTheHeatTimesMagazineKids from "@/public/feeling_the_heat_times_mag
 import summerSafetyTimesMagazineKids from "@/public/summer_safety_times_magazine_kids.png";
 
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
-import { API_URLS } from "@/app/appConstants/apiUrlContants";
+import youngKidsData from "@/public/youngKidsData.json";
 
 const imageMap: { [key: string]: StaticImageData } = {
   brainpowerCricketMuseMagazine,
@@ -87,22 +87,10 @@ const imageMap: { [key: string]: StaticImageData } = {
   // export { youngKidsArticleData };
   // export type { IArticle };
   
-  async function fetchArticleData(category: string): Promise<IArticle[]> {
-    const response = await fetch(API_URLS.GET_CATEGORY_API_URL(category));
-    const data = await response.json();
-    console.log(`data for ${category}:`, data);
-  
-    return data.map((article: any) => ({
-      ...article,
-      img: imageMap[article.img], // Assuming you have an imageMap object
-    }));
-  }
-  
-  let youngKidsArticleData: IArticle[] = [];
-  
-  fetchArticleData("youngkids").then((data) => {
-    youngKidsArticleData = data;
-  });
-  
-  export { youngKidsArticleData };
-  export type { IArticle };
+ export const youngKidsArticleData: IArticle[] =
+  youngKidsData.map((article: any) => ({
+    ...article,
+    img: imageMap[article.img],
+  }));
+
+export type { IArticle };
