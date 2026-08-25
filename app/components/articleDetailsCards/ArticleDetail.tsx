@@ -11,11 +11,9 @@ import { Heart, HeartOutlined } from "../heart";
 import { middleSchoolArticleData } from "@/app/middle-school/api/getArticleforMiddleSchool";
 import { parentsArticleData } from "@/app/parents/api/getArticleData";
 import { Checkbox } from "@mui/material";
-import {
-  addItem,
-  getItems,
-  deleteItem,
-} from "@/app/store/localStorageHelper";
+import { addItem, getItems, deleteItem } from "@/app/store/localStorageHelper";
+import { highSchoolArticleData } from "@/app/high-school/api/getArticleForHighSchool";
+
 
 function ArticleDetail({
   article,
@@ -50,7 +48,8 @@ function ArticleDetail({
 
       case "middleschool":
         return middleSchoolArticleData;
-
+      case "highschool":
+        return highSchoolArticleData;
       case "parents":
         return parentsArticleData;
 

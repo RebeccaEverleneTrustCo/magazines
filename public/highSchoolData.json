@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Can you get vaccinated without a needle?",
+    "img": "canYouGetVaccinatedWithoutANeedle",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "ByVwRmQsG2ZdNfKu",
+    "source": {
+      "id": "UjBmLkTqD8FzWvPx",
+      "name": "Science Journal For Teens"
+    }
+  },
+  {
+    "name": "How can we help stop the COVID-19 pandemic?",
+    "img": "howCanWeHelpStopTheCovid19Pandemic",
+    "statusId": "GhIj2345KlMn6789",
+    "ageRangeId": "OpQr9876StUv5432",
+    "source": {
+      "id": "UjBmLkTqD8FzWvPx",
+      "name": "Science Journal For Teens"
+    }
+  },
+  {
+    "name": "Can HIV drugs help COVID-19 patients????",
+    "img": "canHivDrugsHelpCovid19Patients",
+    "statusId": "MnOp3456QrSt7890",
+    "ageRangeId": "ByVwRmQsG2ZdNfKu",
+    "source": {
+      "id": "UjBmLkTqD8FzWvPx",
+      "name": "Science Journal For Teens"
+    }
+  },
+  {
+    "name": "What if people uses too much antibiotics?",
+    "img": "whatIfPeopleUseTooMuchAntibiotics",
+    "statusId": "YzAb4567CdEf8901",
+    "ageRangeId": "GhIj7654KlMn3210",
+    "source": {
+      "id": "UjBmLkTqD8FzWvPx",
+      "name": "Science Journal For Teens"
+    }
+  },
+  {
+    "name": "Can we write biological \"software updates\" to cure...",
+    "img": "canWeWriteBiologicalSoftwareUpdatesToCure",
+    "statusId": "KlMn5678OpQr0123",
+    "ageRangeId": "ByVwRmQsG2ZdNfKu",
+    "source": {
+      "id": "UjBmLkTqD8FzWvPx",
+      "name": "Science Journal For Teens"
+    }
+  },
+  {
+    "name": "How does pregnancy change mothers' behaviour?",
+    "img": "howDoesPregnancyChangeMothersBehaviour",
+    "statusId": "OpQr6789StUv1234",
+    "ageRangeId": "YzAb5432CdEf1098",
+    "source": {
+      "id": "UjBmLkTqD8FzWvPx",
+      "name": "Science Journal For Teens"
+    }
+  },
+  {
+    "name": "Brain Tumors in Children: 8 Warning Signs You Should...",
+    "img": "brainTumorsInChildren8WarningSignsYouShould",
+    "statusId": "AbCd1234EfGh5678",
+    "ageRangeId": "ByVwRmQsG2ZdNfKu",
+    "source": {
+      "id": "UjBmLkTqD8FzWvPx",
+      "name": "Science Journal For Teens"
+    }
+  },
+  {
+    "name": "More Aggressive Treatment for Female Babies with CDH?",
+    "img": "moreAggressiveTreatmentForFemaleBabiesWithCdh",
+    "statusId": "GhIj2345KlMn6789",
+    "ageRangeId": "ByVwRmQsG2ZdNfKu",
+    "source": {
+      "id": "UjBmLkTqD8FzWvPx",
+      "name": "Science Journal For Teens"
+    }
+  },
+  {
+    "name": "New Funding To Fight Childhood Cancer",
+    "img": "newFundingToFightChildhoodCancer",
+    "statusId": "MnOp3456QrSt7890",
+    "ageRangeId": "UvWx8765YzAb4321",
+    "source": {
+      "id": "UjBmLkTqD8FzWvPx",
+      "name": "Science Journal For Teens"
+    }
+  },
+  {
+    "name": "Expanding Care for Children with Inflammatory Bowel",
+    "img": "expandingCareForChildrenWithInflammatoryBowel",
+    "statusId": "YzAb4567CdEf8901",
+    "ageRangeId": "GhIj7654KlMn3210",
+    "source": {
+      "id": "UjBmLkTqD8FzWvPx",
+      "name": "Science Journal For Teens"
+    }
+  }
+]
