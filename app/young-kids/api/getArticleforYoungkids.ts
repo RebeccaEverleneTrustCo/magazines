@@ -88,9 +88,15 @@ const imageMap: { [key: string]: StaticImageData } = {
   // export type { IArticle };
   
  export const youngKidsArticleData: IArticle[] =
-  youngKidsData.map((article: any) => ({
-    ...article,
-    img: imageMap[article.img],
-  }));
-
+   youngKidsData.map((article: any) => ({
+     ...article,
+     source: {
+       ...article.source,
+       name:
+         article.source?.name === "Highlights"
+           ? "HighlightsKids"
+           : article.source?.name,
+     },
+     img: imageMap[article.img],
+   }));
 export type { IArticle };
