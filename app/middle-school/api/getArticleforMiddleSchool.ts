@@ -31,7 +31,7 @@ import  howCanSyntheticProteinsHelpPrematureBabies from "@/public/how_can_synthe
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import middleSchoolData from "@/public/middleSchoolData.json";
 
-const imageMap: { [key: string]: StaticImageData } = {
+export const imageMap: { [key: string]: StaticImageData } = {
     whatHappensIfYouDoNotGetEnoughSleep,
     whyDoSomePeopleHaveDownSyndrome,
     medicineGetsProactivePreventionIsBetterThan,

@@ -32,7 +32,7 @@ import summerSafetyTimesMagazineKids from "@/public/summer_safety_times_magazine
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import youngKidsData from "@/public/youngKidsData.json";
 
-const imageMap: { [key: string]: StaticImageData } = {
+export const imageMap: { [key: string]: StaticImageData } = {
   brainpowerCricketMuseMagazine,
     whyDoWeYawnHighlights,
     beMindfulTimesMagazineKids,

@@ -15,7 +15,7 @@ import highSchoolData from "@/public/highSchoolData.json";
 
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 
-const imageMap: { [key: string]: StaticImageData } = {
+export const imageMap: { [key: string]: StaticImageData } = {
   canYouGetVaccinatedWithoutANeedle,
   howCanWeHelpStopTheCovid19Pandemic,
   canHivDrugsHelpCovid19Patients,

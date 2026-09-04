@@ -5,7 +5,10 @@ import { API_URLS } from "../../appConstants/apiUrlContants";
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import ArticleDetail from "../../components/articleDetailsCards/ArticleDetail";
 import { getItems } from "@/app/store/localStorageHelper";
-
+import { imageMap as parentsImageMap } from "@/app/parents/api/getArticleData";
+import { imageMap as youngKidsImageMap } from "@/app/young-kids/api/getArticleforYoungkids";
+import { imageMap as middleSchoolImageMap } from "@/app/middle-school/api/getArticleforMiddleSchool";
+import { imageMap as highSchoolImageMap } from "@/app/high-school/api/getArticleForHighSchool";
 interface ArticleDetailsProps {
   params: { articleName: string; category: string };
 }
@@ -75,11 +78,21 @@ const ArticleDetailsCards: React.FC<ArticleDetailsProps> = ({ params }) => {
       article.isFavorite = true;
     }
   });
+const resolvedImage =
+  category === "parents"
+    ? parentsImageMap[article.img as string]
+    : category === "youngkids"
+      ? youngKidsImageMap[article.img as string]
+      : category === "middleschool"
+        ? middleSchoolImageMap[article.img as string]
+        : category === "highschool"
+          ? highSchoolImageMap[article.img as string]
+          : article.img;
 
   return (
     <ArticleDetail
       article={article}
-      src={article.img}
+      src={resolvedImage}
       title={article.name}
       subtitle={article.source.name}
       isFavorite={article.isFavorite ?? false}
