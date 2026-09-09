@@ -28,6 +28,15 @@ import aFocusOnEyesTimesMagazineKids from "@/public/a_focus_on_eyes_times_magazi
 import aSaferSportTimesMagazineKids from "@/public/a_safer_sport_times_magazine_kids.png";
 import feelingTheHeatTimesMagazineKids from "@/public/feeling_the_heat_times_magazine_kids.png";
 import summerSafetyTimesMagazineKids from "@/public/summer_safety_times_magazine_kids.png";
+import howWhiteBloodCellsFightGermsKidsDiscover from "@/public/how_white_blood_cells_fight_germs_kids_discover.jpg";
+import factsAboutCoronavirus from "@/public/facts_about_coronavirus.png";
+import coronavirusGlossary from "@/public/coronavirus_glossary.png";
+import howTheBodyWorks from "@/public/how_the_body_works.png";
+import pubertyAndGrowing from "@/public/puberty_and_growing.png";
+import stayingHealthy from "@/public/staying_healthy.png";
+import kidsMedicalDictionary from "@/public/kids_medical_dictionary.png";
+import healthProblems from "@/public/health_problems.png";
+import illnessAndInjuries from "@/public/illness_and_injuries.png";
 
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import youngKidsData from "@/public/youngKidsData.json";
@@ -61,7 +70,16 @@ export const imageMap: { [key: string]: StaticImageData } = {
     aFocusOnEyesTimesMagazineKids,
     aSaferSportTimesMagazineKids,
     feelingTheHeatTimesMagazineKids,
-    summerSafetyTimesMagazineKids
+    summerSafetyTimesMagazineKids,
+    howWhiteBloodCellsFightGermsKidsDiscover,
+    factsAboutCoronavirus,
+    coronavirusGlossary,
+    howTheBodyWorks,
+    pubertyAndGrowing,
+    stayingHealthy,
+    kidsMedicalDictionary,
+    healthProblems,
+    illnessAndInjuries
   };
   
   // async function fetchYoungKidsArticleData(category: string): Promise<IArticle[]> {

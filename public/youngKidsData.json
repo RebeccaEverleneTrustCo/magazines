@@ -90,7 +90,79 @@
   },
   {
     "name": "How Bones Work",
-    "img": "theHeartsPurposeAndFunction",
+    "img": "howBonesWorkKidsDiscover",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Kids Discover" }
+  },
+  {
+    "name": "How White Blood Cells Fight Germs",
+    "img": "howWhiteBloodCellsFightGermsKidsDiscover",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Kids Discover" }
+  },
+  {
+    "name": "The Brain's Growth and Development",
+    "img": "theBrainsGrowthAndDevKidsDiscover",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Kids Discover" }
+  },
+  {
+    "name": "The Skin's Many Jobs",
+    "img": "theSkinsManyJobsKidsDiscover",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Kids Discover" }
+  },
+  {
+    "name": "Different Ways Lungs Help",
+    "img": "differentWaysLungsHelpKidsDiscover",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Kids Discover" }
+  },
+  {
+    "name": "DNA",
+    "img": "dnaKidsDiscover",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Kids Discover" }
+  },
+   {
+    "name": "The Body's Major Muscles",
+    "img": "theBodysMajorMuscles",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Kids Discover" }
+  },
+   {
+    "name": "The Senses",
+    "img": "theSensesKidsDiscover",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Kids Discover" }
+  },
+  {
+    "name": "What Is the Study of Nutrition?",
+    "img": "whatIsTheStudyOfNutritionKidsDiscover",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Kids Discover" }
+  },
+  {
+    "name": "Germs Are Everywhere",
+    "img": "germsAreEverywhereKidsDiscover",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "statusId": "rNtJ7GnFBy4jgyUC",
     "ageRangeId": "6ugoCKQIbfFBT6lE",
@@ -98,43 +170,122 @@
   },
   {
     "name": "How the Eyes Work",
-    "img": "theHeartsPurposeAndFunction",
+    "img": "howTheEyesWorkKidsDiscover",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "statusId": "rNtJ7GnFBy4jgyUC",
     "ageRangeId": "6ugoCKQIbfFBT6lE",
     "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Kids Discover" }
-  }
-  ,
+  },
   {
-    "name": "A Focus on Eyes",
-    "img": "theHeartsPurposeAndFunction",
+    "name": "Facts About Coronavirus",
+    "img": "factsAboutCoronavirus",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "statusId": "rNtJ7GnFBy4jgyUC",
     "ageRangeId": "6ugoCKQIbfFBT6lE",
-    "source": { "id": "VmMkCdUxLYp9ZODX", "name": "Kids Discover" }
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "National Geographic For Kids" }
+  },
+  {
+    "name": "Coronavirus Glossary",
+    "img": "coronavirusGlossary",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "National Geographic For Kids" }
+  },
+  {
+    "name": "How the Body Works",
+    "img": "howTheBodyWorks",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Nemours KidsHealth" }
+  },
+  {
+    "name": "Puberty & Growing Up",
+    "img": "pubertyAndGrowing",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Nemours KidsHealth" }
+  },
+  {
+    "name": "Staying Healthy",
+    "img": "stayingHealthy",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Nemours KidsHealth" }
+  },
+  {
+    "name": "Kids' Medical Dictionary",
+    "img": "kidsMedicalDictionary",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Nemours KidsHealth" }
+  },
+  {
+    "name": "Health Problems",
+    "img": "healthProblems",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Nemours KidsHealth" }
+  },
+  {
+    "name": "Illness & Injuries",
+    "img": "illnessAndInjuries",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "dEAeZQKTYKBGKNtx", "name": "Nemours KidsHealth" }
+  },
+  {
+    "name": "A Focus on Eyes",
+    "img": "aFocusOnEyesTimesMagazineKids",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "VmMkCdUxLYp9ZODX", "name": "Time Magazine for Kids" }
   },
   {
     "name": "Be Mindful",
-    "img": "theHeartsPurposeAndFunction",
+    "img": "beMindfulTimesMagazineKids",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "statusId": "rNtJ7GnFBy4jgyUC",
     "ageRangeId": "6ugoCKQIbfFBT6lE",
-    "source": { "id": "VmMkCdUxLYp9ZODX", "name": "Kids Discover" }
+    "source": { "id": "VmMkCdUxLYp9ZODX", "name": "Time Magazine for Kids" }
   },
   {
     "name": "All About Bones",
-    "img": "theHeartsPurposeAndFunction",
+    "img": "allAboutBonesTimesMagazineKids",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "statusId": "rNtJ7GnFBy4jgyUC",
     "ageRangeId": "6ugoCKQIbfFBT6lE",
-    "source": { "id": "VmMkCdUxLYp9ZODX", "name": "Kids Discover" }
+    "source": { "id": "VmMkCdUxLYp9ZODX", "name": "Time Magazine for Kids" }
   },
   {
-    "name": "Your Body on Nicotine",
-    "img": "theHeartsPurposeAndFunction",
+    "name": "Feeling the Heat",
+    "img": "feelingTheHeatTimesMagazineKids",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "statusId": "rNtJ7GnFBy4jgyUC",
     "ageRangeId": "6ugoCKQIbfFBT6lE",
-    "source": { "id": "VmMkCdUxLYp9ZODX", "name": "Kids Discover" }
+    "source": { "id": "VmMkCdUxLYp9ZODX", "name": "Time Magazine for Kids" }
+  },
+  {
+    "name": "A Safer Sport",
+    "img": "aSaferSportTimesMagazineKids",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "VmMkCdUxLYp9ZODX", "name": "Time Magazine for Kids" }
+  },
+  {
+    "name": "Summer Safety",
+    "img": "summerSafetyTimesMagazineKids",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statusId": "rNtJ7GnFBy4jgyUC",
+    "ageRangeId": "6ugoCKQIbfFBT6lE",
+    "source": { "id": "VmMkCdUxLYp9ZODX", "name": "Time Magazine for Kids" }
   }
 ]
