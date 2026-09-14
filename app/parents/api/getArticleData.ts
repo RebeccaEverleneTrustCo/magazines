@@ -13,7 +13,7 @@ import NemoursWriteBiological from "@/public/NemoursWriteBiological.png";
 import { IArticle } from "@/app/__mock__/articleDataFormat.ts";
 import parentsData from "@/public/parentsData.json";
 
-const imageMap: { [key: string]: StaticImageData } = {
+export const imageMap: { [key: string]: StaticImageData } = {
   HealthyStayingSafeInTheSun,
   HealthyMentalHealthCare,
   HealthyBuildingImmunity,
