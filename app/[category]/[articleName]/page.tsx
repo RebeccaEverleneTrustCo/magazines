@@ -78,16 +78,7 @@ const ArticleDetailsCards: React.FC<ArticleDetailsProps> = ({ params }) => {
       article.isFavorite = true;
     }
   });
-const resolvedImage =
-  category === "parents"
-    ? parentsImageMap[article.img as string]
-    : category === "youngkids"
-      ? youngKidsImageMap[article.img as string]
-      : category === "middleschool"
-        ? middleSchoolImageMap[article.img as string]
-        : category === "highschool"
-          ? highSchoolImageMap[article.img as string]
-          : article.img;
+const resolvedImage = article.img;
 
   return (
     <ArticleDetail
